@@ -1,4 +1,4 @@
-package com.fryzjerappbackend;
+package com.fryzjerappbackend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "clients")
-public class Client {
+public class User {
 
     @Id
     @GeneratedValue
@@ -17,9 +17,9 @@ public class Client {
     private String password;
     private String email;   
 
-    Client() {} // jpa
+    User() {} // jpa
 
-    public Client(String name, String lastName, String password, String email) {
+    public User(String name, String lastName, String password, String email) {
         this.name = name;
         this.lastName = lastName;
         this.password = password;
@@ -64,7 +64,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
