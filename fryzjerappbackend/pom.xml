@@ -30,6 +30,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--Solution to fix Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException. that class is deprecated in java 9+-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
     </dependencies>
     <properties>
         <org.springframework.version>5.1.2.RELEASE</org.springframework.version>

@@ -1,7 +1,7 @@
 package com;
 
-import com.fryzjerappbackend.Client;
-import com.fryzjerappbackend.ClientRepository;
+import com.fryzjerappbackend.model.User;
+import com.fryzjerappbackend.repository.*;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,11 +11,20 @@ import java.util.Optional;
 
 @SpringBootApplication
 public class FryzjerappbackendApplication implements ApplicationRunner {
+    private final UserRepository userRepository;
+    private final WorkerRepository workerRepository;
+    private final ReservationRepository reservationRepository;
+    private final ScheduleRepository scheduleRepository;
+    private final ServiceRepository serviceRepository;
+    private final RightRepository rightRepository;
 
-    private final ClientRepository clientRepository;
-
-    public FryzjerappbackendApplication(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
+    public FryzjerappbackendApplication(UserRepository userRepository, WorkerRepository workerRepository, ReservationRepository reservationRepository, ScheduleRepository scheduleRepository, ServiceRepository serviceRepository, RightRepository rightRepository) {
+        this.userRepository = userRepository;
+        this.workerRepository = workerRepository;
+        this.reservationRepository = reservationRepository;
+        this.scheduleRepository = scheduleRepository;
+        this.serviceRepository = serviceRepository;
+        this.rightRepository = rightRepository;
     }
 
     public static void main(String[] args) {
@@ -24,25 +33,25 @@ public class FryzjerappbackendApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        final int firstSize = clientRepository.findAll().size();
+        final int firstSize = userRepository.findAll().size();
         System.out.println("firstSize = " + firstSize);
 
-        final Client newClient = new Client("name1", "name2", "pass1", "email1");
+        final User newUser = new User("name1", "name2", "pass1", "email1");
 
-        final Client managedClient = clientRepository.save(newClient); // managed by JPA
+        final User managedUser = userRepository.save(newUser); // managed by JPA
 
-        System.out.println("managedClient = " + managedClient);
+        System.out.println("managedUser = " + managedUser);
 
-        final int secondSize = clientRepository.findAll().size();
+        final int secondSize = userRepository.findAll().size();
         System.out.println("secondSize = " + secondSize);
 
-        final Optional<Client> foundClient = clientRepository.findById(managedClient.getId());
+        final Optional<User> foundClient = userRepository.findById(managedUser.getId());
 
         System.out.println("foundClient = " + foundClient);
 
-//        clientRepository.deleteById(managedClient.getId());
+        userRepository.deleteById(managedUser.getId());
 
-        final int thirdSize = clientRepository.findAll().size();
+        final int thirdSize = userRepository.findAll().size();
         System.out.println("thirdSize = " + thirdSize);
 
     }
