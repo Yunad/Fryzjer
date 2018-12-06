@@ -13,8 +13,11 @@ public class Reservation {
     @Id
     @GeneratedValue
     private long id;
+
     private double date;
     private double time;
+    private long worker_id;
+    private long user_id;
 
     public Reservation(double date, double time) {
         this.date = date;

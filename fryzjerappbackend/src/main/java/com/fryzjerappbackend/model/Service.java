@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "services")
@@ -13,8 +15,12 @@ public class Service {
     @Id
     @GeneratedValue
     private long id;
+    @NotNull
+    @Size(max = 50)
     private String service_type;
+    @NotNull
     private double price;
+    @NotNull
     private double time;
 
     public Service(String service_type, double price, double time) {

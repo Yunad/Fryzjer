@@ -1,10 +1,9 @@
 package com.fryzjerappbackend.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "workers")
@@ -15,6 +14,18 @@ public class Worker {
     private long id;
     private String position;
     private long user_id;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "users_reservations",
+            joinColumns = {@JoinColumn(name = "worker_id")},
+            inverseJoinColumns = {@JoinColumn(name = "reservation_id")})
+    private Set<Reservation> reservations = new HashSet<>();
+
+    public Worker() {
+    }
 
     public Worker(String position, long user_id) {
         this.position = position;
