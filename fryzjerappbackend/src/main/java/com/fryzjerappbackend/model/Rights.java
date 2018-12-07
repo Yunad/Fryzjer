@@ -11,7 +11,7 @@ public class Rights {
 
     @Id
     @GeneratedValue
-    private long id;
+    private long rights_id;
     private String name;
 
     public Rights(String name) {

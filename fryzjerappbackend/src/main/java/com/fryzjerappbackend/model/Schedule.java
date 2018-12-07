@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Schedule {
     @Id
     @GeneratedValue
-    private long schedule_id;
+    private long schedules_id;
     private int month;
     private int day;
 

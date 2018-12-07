@@ -14,7 +14,7 @@ public class Service {
 
     @Id
     @GeneratedValue
-    private long id;
+    private long services_id;
     @NotNull
     @Size(max = 50)
     private String service_type;

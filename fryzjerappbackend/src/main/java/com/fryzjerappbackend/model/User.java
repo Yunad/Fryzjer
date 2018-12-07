@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    private long id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki adnotacja)
+    private long users_id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki adnotacja)
     private String name;
     private String lastName;
     private String password;
@@ -20,8 +20,11 @@ public class User {
             , cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
-    }, mappedBy = "reservations")
-    private Set<Worker> reservations = new HashSet<>();
+    })
+    @JoinTable(name="users_reservations",
+    joinColumns = {@JoinColumn(name = "reservations_id")},
+    inverseJoinColumns = {@JoinColumn(name = "users_id")})
+    private Set<Reservation> reservations = new HashSet<>();
 
     User() {
     } // jpa
@@ -34,7 +37,7 @@ public class User {
     }
 
     public long getId() {
-        return id;
+        return users_id;
     }
 
     public String getName() {
@@ -72,7 +75,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + users_id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +

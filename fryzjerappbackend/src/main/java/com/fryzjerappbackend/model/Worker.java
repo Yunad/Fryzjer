@@ -11,7 +11,7 @@ public class Worker {
 
     @Id
     @GeneratedValue
-    private long id;
+    private long workers_id;
     private String position;
     private long user_id;
 
@@ -20,8 +20,8 @@ public class Worker {
             CascadeType.MERGE
     })
     @JoinTable(name = "users_reservations",
-            joinColumns = {@JoinColumn(name = "worker_id")},
-            inverseJoinColumns = {@JoinColumn(name = "reservation_id")})
+            joinColumns = {@JoinColumn(name = "workers_id")},
+            inverseJoinColumns = {@JoinColumn(name = "reservations_id")})
     private Set<Reservation> reservations = new HashSet<>();
 
     public Worker() {

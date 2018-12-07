@@ -1,10 +1,9 @@
 package com.fryzjerappbackend.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "reservations")
@@ -12,17 +11,24 @@ public class Reservation {
 
     @Id
     @GeneratedValue
-    private long id;
+    private long reservations_id;
 
     private double date;
     private double time;
-    private long worker_id;
-    private long user_id;
+    private long workers_id;
+    private long users_id;
 
     public Reservation(double date, double time) {
         this.date = date;
         this.time = time;
     }
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    }, mappedBy = "users_id")
+    private Set<User> users = new HashSet<>();
+
 
     public double getDate() {
         return date;
