@@ -1,11 +1,13 @@
 package com.fryzjerappbackend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "services")
@@ -29,6 +31,18 @@ public class Service {
         this.time = time;
     }
 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }, mappedBy = "services")
+    private Set<Worker> worker = new HashSet<>();
+
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "workers_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Worker workers;
 
     public String getService_type() {
         return service_type;

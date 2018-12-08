@@ -1,9 +1,10 @@
 package com.fryzjerappbackend.model;
 
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "reservations")
@@ -15,20 +16,21 @@ public class Reservation {
 
     private double date;
     private double time;
-    private long workers_id;
-    private long users_id;
 
     public Reservation(double date, double time) {
         this.date = date;
         this.time = time;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    }, mappedBy = "users_id")
-    private Set<User> users = new HashSet<>();
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "users_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Client users;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "workers_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Worker workers;
 
     public double getDate() {
         return date;

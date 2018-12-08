@@ -1,6 +1,6 @@
 package com;
 
-import com.fryzjerappbackend.model.User;
+import com.fryzjerappbackend.model.Client;
 import com.fryzjerappbackend.repository.*;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -36,20 +36,20 @@ public class FryzjerappbackendApplication implements ApplicationRunner {
         final int firstSize = userRepository.findAll().size();
         System.out.println("firstSize = " + firstSize);
 
-        final User newUser = new User("name1", "name2", "pass1", "email1");
+        final Client newClient = new Client("name1", "name2", "pass1", "email1");
 
-        final User managedUser = userRepository.save(newUser); // managed by JPA
+        final Client managedClient = userRepository.save(newClient); // managed by JPA
 
-        System.out.println("managedUser = " + managedUser);
+        System.out.println("managedClient = " + managedClient);
 
         final int secondSize = userRepository.findAll().size();
         System.out.println("secondSize = " + secondSize);
 
-        final Optional<User> foundClient = userRepository.findById(managedUser.getId());
+        final Optional<Client> foundClient = userRepository.findById(managedClient.getId());
 
         System.out.println("foundClient = " + foundClient);
 
-        userRepository.deleteById(managedUser.getId());
+        userRepository.deleteById(managedClient.getId());
 
         final int thirdSize = userRepository.findAll().size();
         System.out.println("thirdSize = " + thirdSize);

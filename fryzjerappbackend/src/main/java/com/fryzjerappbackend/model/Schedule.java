@@ -9,6 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "schedules")
 public class Schedule {
+
     @Id
     @GeneratedValue
     private long schedules_id;

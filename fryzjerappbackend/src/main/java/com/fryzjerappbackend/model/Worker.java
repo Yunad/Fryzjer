@@ -14,15 +14,23 @@ public class Worker {
     private long workers_id;
     private String position;
     private long user_id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "clients_id")
+    private Client client;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "users_reservations",
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "workers_services",
             joinColumns = {@JoinColumn(name = "workers_id")},
-            inverseJoinColumns = {@JoinColumn(name = "reservations_id")})
-    private Set<Reservation> reservations = new HashSet<>();
+            inverseJoinColumns = {@JoinColumn(name = "services_id")})
+    private Set<Service> services = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "rights_id")
+    private Right rights;
 
     public Worker() {
     }
