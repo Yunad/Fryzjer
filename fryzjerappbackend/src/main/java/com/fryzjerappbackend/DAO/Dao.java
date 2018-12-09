@@ -1,4 +1,4 @@
 package com.fryzjerappbackend.DAO;
 
-public class Client {
+public class Dao {
 }
