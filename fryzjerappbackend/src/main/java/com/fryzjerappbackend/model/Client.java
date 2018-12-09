@@ -1,25 +1,25 @@
 package com.fryzjerappbackend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "clients")
-public class User {
+public class Client {
 
     @Id
     @GeneratedValue
-    private long id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki adnotacja)
+    private long clients_id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki adnotacja)
     private String name;
     private String lastName;
     private String password;
-    private String email;   
+    private String email;
+    @OneToOne(mappedBy = "client")
+    private Worker workers;
 
-    User() {} // jpa
+    Client() {
+    } // jpa
 
-    public User(String name, String lastName, String password, String email) {
+    public Client(String name, String lastName, String password, String email) {
         this.name = name;
         this.lastName = lastName;
         this.password = password;
@@ -27,7 +27,7 @@ public class User {
     }
 
     public long getId() {
-        return id;
+        return clients_id;
     }
 
     public String getName() {
@@ -64,8 +64,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
+        return "Client{" +
+                "id=" + clients_id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +

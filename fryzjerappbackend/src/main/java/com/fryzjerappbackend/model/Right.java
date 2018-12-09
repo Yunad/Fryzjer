@@ -1,22 +1,23 @@
 package com.fryzjerappbackend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "rights")
-public class Rights {
+public class Right {
 
     @Id
     @GeneratedValue
-    private long id;
+    private long rights_id;
     private String name;
 
-    public Rights(String name) {
+    public Right(String name) {
         this.name = name;
     }
+
+    @OneToMany(mappedBy = "rights", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Worker> workers;
 
     public String getName() {
         return name;
