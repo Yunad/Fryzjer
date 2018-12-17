@@ -1,8 +1,5 @@
 package com.fryzjerappbackend.model;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,10 +10,9 @@ import java.util.Set;
 @Table(name = "services")
 public class Service {
 
-
     @Id
     @GeneratedValue
-    private long services_id;
+    private long servicesId;
     @NotNull
     @Size(max = 50)
     private String service_type;
@@ -25,24 +21,20 @@ public class Service {
     @NotNull
     private double time;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "services")
+    private Set<Worker> worker = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "workers_id", nullable = false)
+    private Worker workers;
+
+
     public Service(String service_type, double price, double time) {
         this.service_type = service_type;
         this.price = price;
         this.time = time;
     }
-
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            }, mappedBy = "services")
-    private Set<Worker> worker = new HashSet<>();
-
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "workers_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Worker workers;
 
     public String getService_type() {
         return service_type;
@@ -67,4 +59,5 @@ public class Service {
     public void setTime(double time) {
         this.time = time;
     }
+
 }

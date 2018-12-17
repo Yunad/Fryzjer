@@ -30,6 +30,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+
         <!--Solution to fix Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException. that class is deprecated in java 9+-->
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -41,7 +48,6 @@
     <properties>
         <org.springframework.version>5.1.2.RELEASE</org.springframework.version>
         <org.springframework.boot.version>2.1.0.RELEASE</org.springframework.boot.version>
-        <!--<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>-->
     </properties>
 
 </project>

@@ -2,6 +2,8 @@ package com;
 
 import com.fryzjerappbackend.model.Client;
 import com.fryzjerappbackend.repository.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +13,9 @@ import java.util.Optional;
 
 @SpringBootApplication
 public class FryzjerappbackendApplication implements ApplicationRunner {
+
+    private static final Logger LOG = LogManager.getLogger(FryzjerappbackendApplication.class);
+
     private final ClientRepository clientRepository;
     private final WorkerRepository workerRepository;
     private final ReservationRepository reservationRepository;
@@ -34,25 +39,26 @@ public class FryzjerappbackendApplication implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         final int firstSize = clientRepository.findAll().size();
-        System.out.println("firstSize = " + firstSize);
+        LOG.info("Size of database= {}", firstSize);
 
-        final Client newClient = new Client("name1", "name2", "pass1", "email1");
+        final Client newClient = new Client("Uzytkownik1", "Nazwisko2", "Haslo3", "email@email.email");
 
         final Client managedClient = clientRepository.save(newClient); // managed by JPA
 
-        System.out.println("managedClient = " + managedClient);
+        LOG.info("Managed Client = {}", managedClient);
 
         final int secondSize = clientRepository.findAll().size();
-        System.out.println("secondSize = " + secondSize);
+
+        LOG.info("secondSize = {}", secondSize);
 
         final Optional<Client> foundClient = clientRepository.findById(managedClient.getId());
 
-        System.out.println("foundClient = " + foundClient);
+        LOG.info("foundClient = {}", foundClient);
 
-        clientRepository.deleteById(managedClient.getId());
+//        clientRepository.deleteById(managedClient.getId());
 
         final int thirdSize = clientRepository.findAll().size();
-        System.out.println("thirdSize = " + thirdSize);
+        LOG.info("third Size = {}", thirdSize);
 
     }
 }

@@ -10,9 +10,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     List<Reservation> findAll();
 
     @Override
-    List<Reservation> findAllById(Iterable<Long> iterable);
-
-    @Override
     <S extends Reservation> S saveAndFlush(S s);
 
     @Override

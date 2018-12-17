@@ -1,22 +1,14 @@
 package com.fryzjerappbackend.repository;
 
 import com.fryzjerappbackend.model.Client;
-import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    @Override
-    <S extends Client> S save(S s);
+    Optional<Client> findByEmail(String email);
 
-    @Override
-    void delete(Client client);
-
-    @Override
-    <S extends Client> S saveAndFlush(S s);
-
-    @Override
-    <S extends Client> Optional<S> findOne(Example<S> example);
 }

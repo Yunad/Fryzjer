@@ -1,9 +1,6 @@
 package com.fryzjerappbackend.model;
 
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 
 @Entity
@@ -24,12 +21,10 @@ public class Reservation {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "users_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Client users;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "workers_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Worker workers;
 
     public double getDate() {
