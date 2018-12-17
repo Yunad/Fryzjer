@@ -1,20 +1,22 @@
 package com.fryzjerappbackend.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "clients")
-public class Client {
+public class Client implements Serializable {
 
     @Id
-    @GeneratedValue
-    private long clients_id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki adnotacja)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long clients_id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki adnotacja)
     private String name;
     private String lastName;
     private String password;
     private String email;
     @OneToOne(mappedBy = "client")
     private Worker workers;
+
 
     Client() {
     } // jpa
@@ -26,7 +28,7 @@ public class Client {
         this.email = email;
     }
 
-    public long getId() {
+    public Long getId() {
         return clients_id;
     }
 
