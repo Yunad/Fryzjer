@@ -48,6 +48,7 @@ public class FryzjerappbackendApplication implements ApplicationRunner {
         LOG.info("Managed User = {}", managedUser);
 
         final int secondSize = userRepository.findAll().size();
+        LOG.info("secondSize = {}", secondSize);
 
         LOG.info("secondSize = {}", secondSize);
 
