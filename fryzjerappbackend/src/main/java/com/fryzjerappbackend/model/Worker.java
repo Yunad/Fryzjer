@@ -16,8 +16,12 @@ public class Worker {
     private long user_id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "clients_id")
-    private Client client;
+    @JoinColumn(name = "users_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "roles_id")
+    private Roles roles;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "rights_id")

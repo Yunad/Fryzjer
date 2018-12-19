@@ -1,6 +1,6 @@
 package com;
 
-import com.fryzjerappbackend.model.Client;
+import com.fryzjerappbackend.model.User;
 import com.fryzjerappbackend.repository.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,15 +16,15 @@ public class FryzjerappbackendApplication implements ApplicationRunner {
 
     private static final Logger LOG = LogManager.getLogger(FryzjerappbackendApplication.class);
 
-    private final ClientRepository clientRepository;
+    private final UserRepository userRepository;
     private final WorkerRepository workerRepository;
     private final ReservationRepository reservationRepository;
     private final ScheduleRepository scheduleRepository;
     private final ServiceRepository serviceRepository;
     private final RightRepository rightRepository;
 
-    public FryzjerappbackendApplication(ClientRepository clientRepository, WorkerRepository workerRepository, ReservationRepository reservationRepository, ScheduleRepository scheduleRepository, ServiceRepository serviceRepository, RightRepository rightRepository) {
-        this.clientRepository = clientRepository;
+    public FryzjerappbackendApplication(UserRepository userRepository, WorkerRepository workerRepository, ReservationRepository reservationRepository, ScheduleRepository scheduleRepository, ServiceRepository serviceRepository, RightRepository rightRepository) {
+        this.userRepository = userRepository;
         this.workerRepository = workerRepository;
         this.reservationRepository = reservationRepository;
         this.scheduleRepository = scheduleRepository;
@@ -38,26 +38,27 @@ public class FryzjerappbackendApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        final int firstSize = clientRepository.findAll().size();
+        final int firstSize = userRepository.findAll().size();
         LOG.info("Size of database= {}", firstSize);
 
-        final Client newClient = new Client("Uzytkownik1", "Nazwisko2", "Haslo3", "email@email.email");
+        final User newUser = new User("Uzytkownik1", "Nazwisko2", "Haslo3", "email@email.email");
 
-        final Client managedClient = clientRepository.save(newClient); // managed by JPA
+        final User managedUser = userRepository.save(newUser); // managed by JPA
 
-        LOG.info("Managed Client = {}", managedClient);
+        LOG.info("Managed User = {}", managedUser);
 
-        final int secondSize = clientRepository.findAll().size();
+        final int secondSize = userRepository.findAll().size();
+        LOG.info("secondSize = {}", secondSize);
 
         LOG.info("secondSize = {}", secondSize);
 
-        final Optional<Client> foundClient = clientRepository.findById(managedClient.getId());
+        final Optional<User> foundClient = userRepository.findById(managedUser.getId());
 
         LOG.info("foundClient = {}", foundClient);
 
-//        clientRepository.deleteById(managedClient.getId());
+//        clientRepository.deleteById(managedUser.getId());
 
-        final int thirdSize = clientRepository.findAll().size();
+        final int thirdSize = userRepository.findAll().size();
         LOG.info("third Size = {}", thirdSize);
 
     }
