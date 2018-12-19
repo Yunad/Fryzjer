@@ -1,17 +1,17 @@
 package com.fryzjerappbackend.repository;
 
-import com.fryzjerappbackend.model.Right;
+import com.fryzjerappbackend.model.Roles;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RightRepository extends JpaRepository<Right, Long> {
+public interface RightRepository extends JpaRepository<Roles, Long> {
     @Override
-    List<Right> findAll();
+    List<Roles> findAll();
 
     @Override
-    <S extends Right> S saveAndFlush(S s);
+    <S extends Roles> S saveAndFlush(S s);
 
     @Override
-    void delete(Right right);
+    void delete(Roles roles);
 }

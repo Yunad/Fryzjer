@@ -4,19 +4,19 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "rights")
-public class Right {
+@Table(name = "roles")
+public class Roles {
 
     @Id
     @GeneratedValue
     private long rights_id;
     private String name;
 
-    public Right(String name) {
+    public Roles(String name) {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "rights", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "roles", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Worker> workers;
 
     public String getName() {
