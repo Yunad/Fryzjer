@@ -21,15 +21,15 @@ public class FryzjerappbackendApplication implements ApplicationRunner {
     private final ReservationRepository reservationRepository;
     private final ScheduleRepository scheduleRepository;
     private final ServiceRepository serviceRepository;
-    private final RightRepository rightRepository;
+    private final RoleRepository roleRepository;
 
-    public FryzjerappbackendApplication(UserRepository userRepository, WorkerRepository workerRepository, ReservationRepository reservationRepository, ScheduleRepository scheduleRepository, ServiceRepository serviceRepository, RightRepository rightRepository) {
+    public FryzjerappbackendApplication(UserRepository userRepository, WorkerRepository workerRepository, ReservationRepository reservationRepository, ScheduleRepository scheduleRepository, ServiceRepository serviceRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.workerRepository = workerRepository;
         this.reservationRepository = reservationRepository;
         this.scheduleRepository = scheduleRepository;
         this.serviceRepository = serviceRepository;
-        this.rightRepository = rightRepository;
+        this.roleRepository = roleRepository;
     }
 
     public static void main(String[] args) {

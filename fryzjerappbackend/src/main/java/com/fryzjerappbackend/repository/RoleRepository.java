@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RightRepository extends JpaRepository<Roles, Long> {
+public interface RoleRepository extends JpaRepository<Roles, Long> {
     @Override
     List<Roles> findAll();
 

@@ -23,10 +23,6 @@ public class Worker {
     @JoinColumn(name = "roles_id")
     private Roles roles;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "rights_id")
-    private Right rights;
-
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name = "workers_services",
