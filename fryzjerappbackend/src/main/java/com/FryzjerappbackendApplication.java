@@ -1,7 +1,9 @@
 package com;
 
 import com.fryzjerappbackend.model.User;
-import com.fryzjerappbackend.repository.*;
+import com.fryzjerappbackend.repository.RoleRepository;
+import com.fryzjerappbackend.repository.ServiceRepository;
+import com.fryzjerappbackend.repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.ApplicationArguments;
@@ -17,17 +19,11 @@ public class FryzjerappbackendApplication implements ApplicationRunner {
     private static final Logger LOG = LogManager.getLogger(FryzjerappbackendApplication.class);
 
     private final UserRepository userRepository;
-    private final WorkerRepository workerRepository;
-    private final ReservationRepository reservationRepository;
-    private final ScheduleRepository scheduleRepository;
     private final ServiceRepository serviceRepository;
     private final RoleRepository roleRepository;
 
-    public FryzjerappbackendApplication(UserRepository userRepository, WorkerRepository workerRepository, ReservationRepository reservationRepository, ScheduleRepository scheduleRepository, ServiceRepository serviceRepository, RoleRepository roleRepository) {
+    public FryzjerappbackendApplication(UserRepository userRepository, ServiceRepository serviceRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
-        this.workerRepository = workerRepository;
-        this.reservationRepository = reservationRepository;
-        this.scheduleRepository = scheduleRepository;
         this.serviceRepository = serviceRepository;
         this.roleRepository = roleRepository;
     }

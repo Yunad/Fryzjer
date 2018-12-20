@@ -4,14 +4,15 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
-@Table(name = "clients")
+@Table(name = "Users")
 public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long users_id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki adnotacja)
+    private Long user_id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki adnotacja)
     @NotNull
     @NotEmpty(message = "Name cannot be empty")
     private String name;
@@ -24,9 +25,13 @@ public class User implements Serializable {
     @NotNull
     @NotEmpty(message = "Email cannot be empty")
     private String email;
-    @OneToOne(mappedBy = "user")
-    private Worker workers;
 
+    @OneToMany(mappedBy = "users")
+    Set<UserServicesRelation> userServices;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    Role role;
 
     User() {
     } // jpa
@@ -39,7 +44,7 @@ public class User implements Serializable {
     }
 
     public Long getId() {
-        return users_id;
+        return user_id;
     }
 
     public String getName() {
@@ -77,7 +82,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + users_id +
+                "id=" + user_id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +

@@ -2,8 +2,6 @@ package com.fryzjerappbackend.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,36 +10,29 @@ public class Service {
 
     @Id
     @GeneratedValue
-    private long servicesId;
+    private long service_id;
     @NotNull
-    @Size(max = 50)
-    private String service_type;
+    private String name;
     @NotNull
     private double price;
     @NotNull
-    private double time;
+    private double duration;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "services")
-    private Set<Worker> worker = new HashSet<>();
+    @OneToMany(mappedBy = "services")
+    Set<UserServicesRelation> userServices;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "workers_id", nullable = false)
-    private Worker workers;
-
-
-    public Service(String service_type, double price, double time) {
-        this.service_type = service_type;
+    public Service(String name, double price, double duration) {
+        this.name = name;
         this.price = price;
-        this.time = time;
+        this.duration = duration;
     }
 
-    public String getService_type() {
-        return service_type;
+    public String getName() {
+        return name;
     }
 
-    public void setService_type(String service_type) {
-        this.service_type = service_type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getPrice() {
@@ -52,12 +43,12 @@ public class Service {
         this.price = price;
     }
 
-    public double getTime() {
-        return time;
+    public double getDuration() {
+        return duration;
     }
 
-    public void setTime(double time) {
-        this.time = time;
+    public void setDuration(double duration) {
+        this.duration = duration;
     }
 
 }

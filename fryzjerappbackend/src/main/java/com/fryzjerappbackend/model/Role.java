@@ -5,19 +5,20 @@ import java.util.Set;
 
 @Entity
 @Table(name = "roles")
-public class Roles {
+public class Role {
 
     @Id
     @GeneratedValue
-    private long rights_id;
+    private long role_id;
     private String name;
 
-    public Roles(String name) {
+    @OneToMany(mappedBy = "role")
+    Set<User> user;
+
+
+    public Role(String name) {
         this.name = name;
     }
-
-    @OneToMany(mappedBy = "roles", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Worker> workers;
 
     public String getName() {
         return name;
@@ -26,4 +27,6 @@ public class Roles {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

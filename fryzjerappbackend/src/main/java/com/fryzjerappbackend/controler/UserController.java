@@ -14,44 +14,44 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
-    @Autowired
-    private UserService userService;
-
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public User getUserById(@PathVariable("id") long id) {
-        return userService.getUserById(id);
-    }
-
-    @GetMapping("/find/{email}")
-    @ResponseStatus(HttpStatus.OK)
-    public Optional<User> findByEmail(@PathVariable("email") String email) {
-        return userService.findUserByEmail(email);
-    }
-
-    @PostMapping("/create2")
-    User newClient(@RequestBody User newUser) {
-        return userService.createUser(newUser);
-    }
-
-    @PostMapping("/create/")
-    @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
-    }
-
-    @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
-    public List<User> getAllUser() {
-        return userService.getAllUsers();
-    }
-
-    @PostMapping("/login/{email}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void loginUser(@PathVariable("email") String email, String Password) {
-        if (userService.isUserInDatabase(email)) {
-
-        }
-    }
+//
+//    @Autowired
+//    private UserService userService;
+//
+//    @GetMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public User getUserById(@PathVariable("id") long id) {
+//        return userService.getUserById(id);
+//    }
+//
+//    @GetMapping("/find/{email}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public Optional<User> findByEmail(@PathVariable("email") String email) {
+//        return userService.findUserByEmail(email);
+//    }
+//
+//    @PostMapping("/create2")
+//    User newClient(@RequestBody User newUser) {
+//        return userService.createUser(newUser);
+//    }
+//
+//    @PostMapping("/create/")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public User createUser(@RequestBody User user) {
+//        return userService.createUser(user);
+//    }
+//
+//    @GetMapping("/all")
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<User> getAllUser() {
+//        return userService.getAllUsers();
+//    }
+//
+//    @PostMapping("/login/{email}")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void loginUser(@PathVariable("email") String email, String Password) {
+//        if (userService.isUserInDatabase(email)) {
+//
+//        }
+//    }
 }
