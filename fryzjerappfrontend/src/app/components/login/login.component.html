@@ -1,0 +1,12 @@
+<div class="form-group">
+  <label for="">Login</label>
+  <input [(ngModel)]="login" class="form-control">
+  <br>
+  <label for="">Hasło</label>
+  <input [(ngModel)]="password" type="text" class="form-control">
+  <br>
+
+  <button (click)="onLogin()" class="btn-info">Zaloguj</button>
+  <br>
+  <p class="validation">{{validationMessage}}</p>
+</div>
