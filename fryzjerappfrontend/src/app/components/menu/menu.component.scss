@@ -1,0 +1,32 @@
+.custom_nav {
+  margin-top: 25%;
+  li {
+    display: inline;
+    float: left;
+    padding: 10px 10px;
+    background: chocolate;
+    box-shadow: 5px 5px 10px gray;
+
+
+
+    &:hover {
+      background: burlywood;
+      transform: scale(1.0);
+      transition: ease-in-out;
+      transition-duration: .4s;
+      font-weight: bold;
+      font-size: larger;
+
+    }
+
+    a {
+
+      float: top;
+
+      &:hover {
+        box-shadow: black;
+
+      }
+    }
+  }
+}
