@@ -1,0 +1,32 @@
+.validation {
+  color: crimson;
+}
+.Butlog {
+ /* font-family: Ebrima;
+  background: dimgray;
+  text-align: start;
+  color: black;*/
+
+  background-image: none;
+  background-color: #4b4b4b;
+  color: #ffffff;
+  border-radius: 0;
+  filter: none;
+  padding: 10px 15px;
+}
+label {
+  font-family: "Arial Black";
+  display: inline;
+
+}
+
+.form-control {
+  height: calc(1.75rem + 2px);
+  width : 90%;
+}
+input {
+  margin-left: 2px;
+}
+.form-group {
+
+}
