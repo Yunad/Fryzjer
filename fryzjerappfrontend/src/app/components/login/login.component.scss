@@ -30,3 +30,22 @@ input {
 .form-group {
 
 }
+.text-primary {
+margin-left: 41%;
+
+}
+.btn-info {
+  margin-left:1%;
+}
+.resent {
+  text-align: left;
+  text-decoration-line: underline;
+  font-size: smaller;
+  margin-left:1%;
+
+  &:hover {
+    color: red;
+  }
+  
+
+}

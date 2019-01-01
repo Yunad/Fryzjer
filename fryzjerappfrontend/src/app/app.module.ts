@@ -13,12 +13,14 @@ import { MenuComponent } from './components/menu/menu.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'priceList', component: PriceListComponent}
+  { path: 'priceList', component: PriceListComponent},
+  { path: 'reminder', component: ReminderComponent}
 ];
 
 @NgModule({
@@ -32,6 +34,7 @@ const routes: Routes = [
     CarouselComponent,
     FooterComponent,
     PriceListComponent,
+    ReminderComponent,
   ],
   imports: [
     BrowserModule,

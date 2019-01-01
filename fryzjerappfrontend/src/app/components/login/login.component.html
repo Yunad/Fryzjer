@@ -1,15 +1,17 @@
 <div class="form-group">
   <p class="Butlog">
-    <b>Zaloguj się</b>
+    <b>Zaloguj się i !!!</b>
   </p>
   <label for="">E-mail</label>
   <input [(ngModel)]="login" class="form-control">
-  <br>
+
   <label for="">Hasło</label>
   <input [(ngModel)]="password" type="text" class="form-control">
   <br>
-
   <button (click)="onLogin()" class="btn-info">Zaloguj</button>
+  <button (click)="goTo('register')" class="text-primary">Załóż konto</button>
   <br>
+  <p (click)="goTo('reminder')" class="resent"><u>Zapomniałem hasła</u></p>
+
   <p class="validation">{{validationMessage}}</p>
 </div>
