@@ -1,0 +1,37 @@
+.footer {
+  table-layout: fixed;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: smaller;
+  position: relative;
+  bottom: 0;
+  background: beige;
+  margin-left: 30%;
+  margin-right: 30%;
+
+}
+.lef {
+  text-align: right;
+}
+.rig {
+  text-align: left;
+  border: medium none;
+
+}
+td {
+  text-align: center;
+  border-left: 1px solid #aaaaaa;
+  display: inline-block;
+  line-height: 20px;
+  margin: 0;
+  padding: 0 15px;
+
+}
+
+.btn-success {
+  color: red;
+  background-color: snow;
+}
+.custom_nav {
+
+}

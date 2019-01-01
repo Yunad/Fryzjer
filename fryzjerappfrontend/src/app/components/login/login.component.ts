@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   public password: string = "";
   public validationMessage: string = "";
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   public onLogin(): void {
     this.validationMessage = "";
@@ -20,6 +21,10 @@ export class LoginComponent implements OnInit {
     } else {
       this.validationMessage = "Wypełnij pole LOGIN oraz HASŁO";
     }
+  }
+
+  public goTo(path: string): void {
+    this.router.navigate([path])
   }
 
   ngOnInit() {
