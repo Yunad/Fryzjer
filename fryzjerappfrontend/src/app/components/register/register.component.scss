@@ -1,0 +1,21 @@
+p {
+  font-family: Gadugi;
+  font-size: x-large;
+  font-style: normal;
+
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+.text{
+  font-size: xx-small;
+}
+
+.smallText{
+  font-size: 12px;
+  line-height: 10px;
+  color: rgba(0,0,0,0.6);
+  padding: 2px 0 0 0;
+}

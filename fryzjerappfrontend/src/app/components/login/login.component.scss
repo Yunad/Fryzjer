@@ -13,6 +13,7 @@
   border-radius: 0;
   filter: none;
   padding: 10px 15px;
+  cursor: context-menu;
 }
 label {
   font-family: "Arial Black";
@@ -42,10 +43,11 @@ margin-left: 41%;
   text-decoration-line: underline;
   font-size: smaller;
   margin-left:1%;
+  cursor: context-menu;
 
   &:hover {
-    color: red;
+    color: crimson;
   }
-  
+
 
 }
