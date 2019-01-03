@@ -3,6 +3,7 @@ p {
   font-size: x-large;
   font-style: normal;
 
+
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -18,4 +19,82 @@ p {
   line-height: 10px;
   color: rgba(0,0,0,0.6);
   padding: 2px 0 0 0;
+  padding-bottom: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+.container mt-sm-0 {
+  width: border-box;
+}
+.form-control {
+  width: 90%;
+  height: 30px;
+  padding: .75rem;
+  border: 1px solid #919193;
+  font-family: serif;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+.container mt-5{
+  box-sizing: border-box;
+  width: 50%;
+  padding-left: 0px;
+  padding-bottom: 5%;
+
+  //display: grid;
+
+}
+.col-lg-4{
+  float: left;
+}
+.col-sm-6{
+  float: left;
+  padding-bottom: 5%;
+}
+.head{
+  margin-bottom: 0%;
+  font-family: titilliumwebsemibold, sans-serif;
+  line-height: 0;
+  font-weight: bolder;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-top: 7%;
+}
+.btn{
+  margin-bottom: 5%;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #d20862;
+  margin-left: 60%;
+
+}
+
+.header-panel {
+  background-color: chocolate;//#4b4b4b;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+  padding: 10px 15px;
+}
+
+.text-body {
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+  background: white;
+}
+h2 {
+  margin-bottom: 0%;
+  font-size: 24px;
+  font-family: Georgia;
+  line-height: 26px;
+  color: black;
+  font-size: large;
+  font-weight: bold;
+}
+body {
+  background: beige;
+  padding-left: 0%;
+}
+
+
+
+header {
+  background: beige;
 }
