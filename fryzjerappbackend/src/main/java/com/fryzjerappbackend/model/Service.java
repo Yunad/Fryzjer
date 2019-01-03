@@ -5,27 +5,32 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
-@Table(name = "services")
+@Table(name = "Services")
 public class Service {
 
     @Id
     @GeneratedValue
-    private long service_id;
+    @Column(name = "serviceId")
+    private long serviceId;
     @NotNull
+    @Column(name = "name")
     private String name;
     @NotNull
+    @Column(name = "price")
     private double price;
     @NotNull
+    @Column(name = "duration")
     private double duration;
 
-    @OneToMany(mappedBy = "services")
+    @OneToMany(mappedBy = "service")
     Set<UserServicesRelation> userServices;
 
-    public Service(String name, double price, double duration) {
-        this.name = name;
-        this.price = price;
-        this.duration = duration;
+    public Service() {
     }
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "appointmentId")
+    private Appointment appointment;
 
     public String getName() {
         return name;

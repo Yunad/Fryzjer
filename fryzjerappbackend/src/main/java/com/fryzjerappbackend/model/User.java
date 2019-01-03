@@ -11,32 +11,46 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long user_id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki adnotacja)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userId", updatable = false, nullable = false)
+    private Long userId; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki anotacja)
     @NotNull
     @NotEmpty(message = "Name cannot be empty")
+    @Column(name = "name")
     private String name;
     @NotNull
     @NotEmpty(message = "Lastname cannot be empty")
+    @Column(name = "lastName")
     private String lastName;
     @NotNull
     @NotEmpty(message = "Password cannot be empty")
+    @Column(name = "password")
     private String password;
     @NotNull
     @NotEmpty(message = "Email cannot be empty")
+    @Column(name = "email")
     private String email;
+    @Column(name = "roleId")
+    private Long roleId;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     Set<UserServicesRelation> userServices;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    Role role;
+    @OneToMany(mappedBy = "user")
+    Set<UserAppointment> userAppointments;
 
-    User() {
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
+    public User() {
     } // jpa
 
-    public User(String name, String lastName, String password, String email) {
+    public User(@NotNull @NotEmpty(message = "Name cannot be empty") String name, @NotNull @NotEmpty(message = "Lastname cannot be empty") String lastName, @NotNull @NotEmpty(message = "Password cannot be empty") String password, @NotNull @NotEmpty(message = "Email cannot be empty") String email) {
         this.name = name;
         this.lastName = lastName;
         this.password = password;
@@ -44,7 +58,7 @@ public class User implements Serializable {
     }
 
     public Long getId() {
-        return user_id;
+        return userId;
     }
 
     public String getName() {
@@ -82,7 +96,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + user_id +
+                "user_id=" + userId +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +

@@ -3,17 +3,17 @@ package com.fryzjerappbackend.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "UserServiceRelations")
-public class UserServicesRelation {
-
+@Table(name = "UserAppointments")
+public class UserAppointment {
     @Id
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "serviceId")
-    private Service service;
+    @JoinColumn(name = "appointmentId")
+    private Appointment appointment;
+
 }
