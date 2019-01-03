@@ -1,23 +1,44 @@
 package com.fryzjerappbackend.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "Roles")
+public class Role implements Serializable {
+
 
     @Id
-    @GeneratedValue
-    private long role_id;
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
+
+    @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "role")
-    Set<User> user;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "roleId")
+    private List<User> users = new ArrayList<>();
 
+    public List<User> getUsers() {
+        return users;
+    }
 
-    public Role(String name) {
-        this.name = name;
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public Role() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -28,5 +49,12 @@ public class Role {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Role{" +
+                "role_id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 
 }

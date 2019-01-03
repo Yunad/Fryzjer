@@ -11,6 +11,7 @@
 
     <groupId>com.fyzjer.app.backend</groupId>
     <artifactId>fryzjer-app-backend</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -19,6 +20,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.zaxxer</groupId>
+                    <artifactId>HikariCP</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -28,13 +35,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.11.0</version>
+            <!--<scope>test</scope>-->
         </dependency>
 
         <!--Solution to fix Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException. that class is deprecated in java 9+-->
@@ -53,7 +54,18 @@
             <artifactId>spring-security-crypto</artifactId>
             <version>5.2.0.BUILD-SNAPSHOT</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-rest-core</artifactId>
+            <version>3.2.0.BUILD-SNAPSHOT</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <org.springframework.version>5.1.2.RELEASE</org.springframework.version>
