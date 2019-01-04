@@ -4,7 +4,7 @@
     <test name="DBtests">
         <classes>
             <class name="com.fryzjerappbackend.controler.RoleControllerTest"/>
-            <!--<class name="com.fryzjerappbackend.UserRoleAssociationTest"/>-->
+            <class name="com.fryzjerappbackend.UserRoleAssociationTest"/>
         </classes>
     </test>
 </suite>
