@@ -1,13 +1,16 @@
 <div class="container mt-4">
   <app-header></app-header>
+<header>
+  <h2><b>Nasze usługi fryzjerskie</b></h2>
+  <div class="hr">&nbsp;</div>
+<div class="row">
 
-
-    <div *ngFor = "let serv of services" (click)="onSelect(serv)" class="margin">
+    <div *ngFor = "let serv of services" (click)="onSelect(serv)" class="col-lg-4">
       <span class="btn"><U>{{serv.name}}</U></span>
     </div>
 
 
-  <div *ngIf="selectedServ">
+  <div *ngIf="selectedServ" class="col-lg-8">
 
     <h2>{{selectedServ.name | uppercase}}</h2>
     <div><span><b>Czas trwania usługi: </b></span>{{selectedServ.duration}}</div>
@@ -17,5 +20,6 @@
 
   </div>
 </div>
-
+</header>
+</div>
 <app-footer></app-footer>
