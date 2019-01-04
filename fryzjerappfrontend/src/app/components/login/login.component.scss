@@ -2,17 +2,19 @@
   color: crimson;
 }
 .Butlog {
- /* font-family: Ebrima;
-  background: dimgray;
-  text-align: start;
-  color: black;*/
+
 
   background-image: none;
-  background-color: #4b4b4b;
-  color: #ffffff;
+  background-color: chocolate;
+  font-weight: bolder;
+  font-family: Georgia;
+
+  color: black;
   border-radius: 0;
   filter: none;
-  padding: 10px 15px;
+  padding: 7px 10px;
+  cursor: context-menu;
+  font-size: large;
 }
 label {
   font-family: "Arial Black";
@@ -22,30 +24,50 @@ label {
 
 .form-control {
   height: calc(1.75rem + 2px);
-  width : 90%;
+  width : 98%;
 }
 input {
   margin-left: 2px;
 }
 .form-group {
+margin-bottom: 0;
+}
+.btn-sm {
+  margin-left: 43%;
+  cursor: pointer;
+  color: black;
+  background-color: chocolate;
+
+  font-weight: bold;
+  font-family: Georgia;
+  padding-bottom: 3px;
+  padding-top: 3px;
+
 
 }
-.text-primary {
-margin-left: 41%;
-
-}
-.btn-info {
+.btn{
   margin-left:1%;
+
+  margin-bottom: 2%;
+  cursor: pointer;
+  color: black;
+  background-color: chocolate;
+
+  font-weight: bold;
+  font-family: Georgia;
 }
 .resent {
   text-align: left;
   text-decoration-line: underline;
   font-size: smaller;
   margin-left:1%;
+  cursor: context-menu;
+  margin-bottom: 0;
 
   &:hover {
-    color: red;
+    color: crimson;
   }
-  
+
 
 }
+
