@@ -21,13 +21,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/get/id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<User> getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/get/{email}")
+    @GetMapping("/get/email/{email}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<User> findByEmail(@PathVariable("email") String email) {
         return userService.findUserByEmail(email);

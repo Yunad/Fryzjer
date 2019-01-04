@@ -1,9 +1,7 @@
 package com.fryzjerappbackend.model;
 
-import org.springframework.data.jpa.repository.Query;
-
 import javax.persistence.*;
-import java.util.HashSet;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -17,20 +15,12 @@ public class Appointment {
     private Long id;
     @Column(name = "date")
     private String date;
+    @NotNull
+    @Column(name = "serviceId")
+    private Long serviceId;
 
     @OneToMany(mappedBy = "appointmentId")
-    Set<UserAppointment> userAppointment;
-
-    //    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY, optional = false)
-//    private Service service;
-//
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "appointmentServices", joinColumns = @JoinColumn(name = "appointmentId"), inverseJoinColumns = @JoinColumn(name = "serviceId"))
-    private Set<Service> services = new HashSet<>();
+    private Set<UserAppointment> userAppointment;
 
     public Appointment() {
     }
@@ -47,20 +37,20 @@ public class Appointment {
         this.date = date;
     }
 
-    public Set<Service> getServices() {
-        return services;
-    }
-
-    public void setServices(Set<Service> services) {
-        this.services = services;
-    }
-
     public Set<UserAppointment> getUserAppointment() {
         return userAppointment;
     }
 
     public void setUserAppointment(Set<UserAppointment> userAppointment) {
         this.userAppointment = userAppointment;
+    }
+
+    public Long getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
     }
 
 }

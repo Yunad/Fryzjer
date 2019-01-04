@@ -34,13 +34,14 @@ public class User implements Serializable {
     @Column(name = "email")
     private String email;
     @Column(name = "roleId")
+    @NotNull
     private Long roleId;
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
-    @JoinTable(name = "userServices", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "serviceId"))
+    @JoinTable(name = "userServices", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "serviceId"))
     private Set<Service> services = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL)

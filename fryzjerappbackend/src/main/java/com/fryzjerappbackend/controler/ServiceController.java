@@ -1,6 +1,5 @@
 package com.fryzjerappbackend.controler;
 
-import com.fryzjerappbackend.model.Role;
 import com.fryzjerappbackend.model.Service;
 import com.fryzjerappbackend.service.ServiceService;
 import org.apache.logging.log4j.LogManager;
