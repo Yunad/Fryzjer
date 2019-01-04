@@ -1,26 +1,21 @@
 <div class="container mt-4">
   <app-header></app-header>
-  <br>
-  <div class="myTitle">
-    Cennik Fryzjerski
+
+
+    <div *ngFor = "let serv of services" (click)="onSelect(serv)" class="margin">
+      <span class="btn"><U>{{serv.name}}</U></span>
+    </div>
+
+
+  <div *ngIf="selectedServ">
+
+    <h2>{{selectedServ.name | uppercase}}</h2>
+    <div><span><b>Czas trwania usługi: </b></span>{{selectedServ.duration}}</div>
+    <div><span><b>Cena usługi: </b></span>{{selectedServ.price}}</div>
+    <div><span><b>Opis usługi: </b></span><br>{{selectedServ.description}}</div>
+
+
   </div>
-  <br>
-  <table>
-    <tr>
-      <td class="service"><b>Strzyżenie męskie</b></td>
-      <td class="description">  -  obcinanie mężczyzn  -  </td>
-      <td class="price"> 15 - 30 PLN</td>
-    </tr>
-    <tr>
-      <td class="service"><b>Strzyżenie damskie</b></td>
-      <td class="description">  -  obcinanie kobiet  -  </td>
-      <td class="price"> 20 - 80 PLN</td>
-    </tr>
-    <tr>
-      <td class="service"><b>Strzyżenie dziecięce</b></td>
-      <td class="description">  -  obcinanie dzieci  -  </td>
-      <td class="price">10 - 20 PLN</td>
-    </tr>
-  </table>
 </div>
+
 <app-footer></app-footer>

@@ -1,15 +1,24 @@
-.service {
-  font-size: larger;
+.margin {
+  padding-top: 0;
+  background-color: beige;
+  //width: max-content;
+  text-align: left;
+  margin: 0%;
+  width: 50%;
+}
+.btn {
+  margin-bottom: 0%;
+  margin-top: 2%;
+  cursor: pointer;
+  color: black;
+  background-color: chocolate;
+
+  font-weight: bold;
+  font-family: Georgia;
+  width: 270px;
 
 }
-
-.description {
-  font-style: oblique;
-}
-
-.price{
-  color: darkorange;
-}
-.myTitle {
-  font-size: xx-large;
+.twoodiv {
+  width: 50%;
+margin: 0%;
 }
