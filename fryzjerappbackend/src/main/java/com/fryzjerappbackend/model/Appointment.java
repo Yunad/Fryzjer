@@ -1,13 +1,12 @@
 package com.fryzjerappbackend.model;
 
-import org.springframework.data.jpa.repository.Query;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
 @Entity
-@Table(name = "Appointment")
+@Table(name = "Appointments")
 public class Appointment {
 
     @Id
@@ -16,12 +15,42 @@ public class Appointment {
     private Long id;
     @Column(name = "date")
     private String date;
+    @NotNull
+    @Column(name = "serviceId")
+    private Long serviceId;
 
-    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
-    private Service service;
+    @OneToMany(mappedBy = "appointmentId")
+    private Set<UserAppointment> userAppointment;
 
-    @OneToMany(mappedBy = "appointment")
-    Set<UserAppointment> userAppointment;
+    public Appointment() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Set<UserAppointment> getUserAppointment() {
+        return userAppointment;
+    }
+
+    public void setUserAppointment(Set<UserAppointment> userAppointment) {
+        this.userAppointment = userAppointment;
+    }
+
+    public Long getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
+    }
 
 }

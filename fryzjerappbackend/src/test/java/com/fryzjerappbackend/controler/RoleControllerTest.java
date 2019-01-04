@@ -56,7 +56,7 @@ public class RoleControllerTest extends AbstractTransactionalTestNGSpringContext
         Optional<User> user = userRepository.findByName(USERNAME);
         if (user.isPresent())
             entityManager.remove(user.get());
-        Assert.assertFalse(userRepository.findUserByUserId(user.get().getId()).isPresent());
+        Assert.assertFalse(userRepository.findUserById(user.get().getId()).isPresent());
     }
 
     @Test
@@ -68,7 +68,7 @@ public class RoleControllerTest extends AbstractTransactionalTestNGSpringContext
         if (user.isPresent()) {
             user.get().setName("name2");
         }
-        updatedUser = userRepository.findUserByUserId(user.get().getId());
+        updatedUser = userRepository.findUserById(user.get().getId());
 
         if (updatedUser.isPresent()) {
             Assert.assertEquals(updatedUser.get().getName(), "name2", "User has not been updated");

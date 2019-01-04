@@ -1,7 +1,13 @@
 package com.fryzjerappbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -9,9 +15,8 @@ import java.util.Set;
 public class Service {
 
     @Id
-    @GeneratedValue
-    @Column(name = "serviceId")
-    private long serviceId;
+    @Column(name = "id")
+    private long id;
     @NotNull
     @Column(name = "name")
     private String name;
@@ -21,16 +26,32 @@ public class Service {
     @NotNull
     @Column(name = "duration")
     private double duration;
+    @ManyToMany(mappedBy = "services")
+    private Set<User> users = new HashSet<>();
 
-    @OneToMany(mappedBy = "service")
-    Set<UserServicesRelation> userServices;
+    @JsonBackReference //blocks loops for rest calls
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "serviceId")
+    private List<Appointment> appointments = new ArrayList<>();
 
     public Service() {
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "appointmentId")
-    private Appointment appointment;
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
 
     public String getName() {
         return name;
@@ -56,4 +77,11 @@ public class Service {
         this.duration = duration;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

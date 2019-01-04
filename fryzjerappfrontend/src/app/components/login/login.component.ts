@@ -8,9 +8,9 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  public  login: string = "";
+  public login: string = "";
   public password: string = "";
-  public validationMessage: string = "";
+  public validationMessage: string = '';
 
   constructor(private router: Router) { }
 

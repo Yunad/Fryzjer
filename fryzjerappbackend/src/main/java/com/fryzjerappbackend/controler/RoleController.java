@@ -19,13 +19,13 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    @PostMapping("/login/create/role")
+    @PostMapping("/create/role")
     @ResponseStatus(HttpStatus.CREATED)
     public void createRole(@RequestBody Role role) {
         roleService.createRole(role);
     }
 
-    @GetMapping("login/get/role")
+    @GetMapping("get/roles")
     @ResponseStatus(HttpStatus.OK)
     public List<Role> getRoles() {
         return roleService.getAllRoles();
