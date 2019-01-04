@@ -21,26 +21,25 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<User> getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/find/{email}")
+    @GetMapping("/get/{email}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<User> findByEmail(@PathVariable("email") String email) {
         return userService.findUserByEmail(email);
     }
 
-
-    @GetMapping("/all")
+    @GetMapping("/get/all")
     @ResponseStatus(HttpStatus.OK)
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/login/create")
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody User user) {
         userService.createUser(user);

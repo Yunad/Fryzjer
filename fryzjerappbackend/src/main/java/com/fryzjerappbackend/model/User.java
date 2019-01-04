@@ -4,6 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,8 +15,8 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId", updatable = false, nullable = false)
-    private Long userId; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki anotacja)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki anotacja)
     @NotNull
     @NotEmpty(message = "Name cannot be empty")
     @Column(name = "name")
@@ -33,11 +36,16 @@ public class User implements Serializable {
     @Column(name = "roleId")
     private Long roleId;
 
-    @OneToMany(mappedBy = "user")
-    Set<UserServicesRelation> userServices;
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "userServices", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "serviceId"))
+    private Set<Service> services = new HashSet<>();
 
-    @OneToMany(mappedBy = "user")
-    Set<UserAppointment> userAppointments;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId")
+    private List<UserAppointment> userAppointments = new ArrayList<>();
 
     public Long getRoleId() {
         return roleId;
@@ -55,10 +63,6 @@ public class User implements Serializable {
         this.lastName = lastName;
         this.password = password;
         this.email = email;
-    }
-
-    public Long getId() {
-        return userId;
     }
 
     public String getName() {
@@ -93,10 +97,22 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public List<UserAppointment> getUserAppointments() {
+        return userAppointments;
+    }
+
+    public void setUserAppointments(List<UserAppointment> userAppointments) {
+        this.userAppointments = userAppointments;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + userId +
+                "user_id=" + id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +

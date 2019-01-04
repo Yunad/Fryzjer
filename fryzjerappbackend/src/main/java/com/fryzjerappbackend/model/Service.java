@@ -1,7 +1,10 @@
 package com.fryzjerappbackend.model;
 
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -10,8 +13,8 @@ public class Service {
 
     @Id
     @GeneratedValue
-    @Column(name = "serviceId")
-    private long serviceId;
+    @Column(name = "id")
+    private long id;
     @NotNull
     @Column(name = "name")
     private String name;
@@ -21,16 +24,32 @@ public class Service {
     @NotNull
     @Column(name = "duration")
     private double duration;
+    @ManyToMany(mappedBy = "services")
+    private Set<User> users = new HashSet<>();
 
-    @OneToMany(mappedBy = "service")
-    Set<UserServicesRelation> userServices;
+    //    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "appointmentId")
+    @ManyToMany(mappedBy = "services")
+    private Set<Appointment> appointment = new HashSet<>();
 
     public Service() {
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "appointmentId")
-    private Appointment appointment;
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Set<Appointment> getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Set<Appointment> appointment) {
+        this.appointment = appointment;
+    }
 
     public String getName() {
         return name;
@@ -56,4 +75,11 @@ public class Service {
         this.duration = duration;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
