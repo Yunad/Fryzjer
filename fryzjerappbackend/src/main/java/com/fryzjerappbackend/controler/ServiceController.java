@@ -11,20 +11,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/service")
 public class ServiceController {
     private static final Logger LOG = LogManager.getLogger(com.fryzjerappbackend.controler.ServiceController.class);
 
     @Autowired
     private ServiceService serviceService;
 
-    @PostMapping("/create/service")
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createRole(@RequestBody Service service) {
+        LOG.info("Service {} has been created.");
         serviceService.createService(service);
     }
 
-    @GetMapping("/get/services")
+    @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<Service> getServices() {
         return serviceService.getAllServices();

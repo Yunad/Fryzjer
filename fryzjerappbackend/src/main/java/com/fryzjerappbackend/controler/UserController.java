@@ -14,7 +14,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
     private static final Logger LOG = LogManager.getLogger(UserController.class);
 
@@ -33,7 +33,7 @@ public class UserController {
         return userService.findUserByEmail(email);
     }
 
-    @GetMapping("/get/all")
+    @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<User> getAllUsers() {
         return userService.getAllUsers();
@@ -42,6 +42,7 @@ public class UserController {
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody User user) {
+        LOG.info("User {} has been created.", user);
         userService.createUser(user);
     }
 }

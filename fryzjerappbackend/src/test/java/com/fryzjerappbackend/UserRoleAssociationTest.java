@@ -42,7 +42,7 @@ public class UserRoleAssociationTest extends AbstractTransactionalTestNGSpringCo
     @BeforeMethod
     public void testInit() {
         entityManager.persist(new Role((long) 1, "roleName"));
-        entityManager.persist(new User("name", "lastName", "password", "email"));
+        entityManager.persist(new User("name", "lastName", "password", "email", 1L));
     }
 
     @Test //FIXME get association working for tests.

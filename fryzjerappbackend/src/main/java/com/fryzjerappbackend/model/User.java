@@ -1,5 +1,7 @@
 package com.fryzjerappbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -37,12 +39,17 @@ public class User implements Serializable {
     @NotNull
     private Long roleId;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "userServices", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "serviceId"))
-    private Set<Service> services = new HashSet<>();
+    @OneToMany(mappedBy = "userId")
+    private Set<UserServiceRelation> userService;
+
+
+    public Set<UserServiceRelation> getUserService() {
+        return userService;
+    }
+
+    public void setUserService(Set<UserServiceRelation> userService) {
+        this.userService = userService;
+    }
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
@@ -59,11 +66,12 @@ public class User implements Serializable {
     public User() {
     } // jpa
 
-    public User(@NotNull @NotEmpty(message = "Name cannot be empty") String name, @NotNull @NotEmpty(message = "Lastname cannot be empty") String lastName, @NotNull @NotEmpty(message = "Password cannot be empty") String password, @NotNull @NotEmpty(message = "Email cannot be empty") String email) {
+    public User(@NotNull @NotEmpty(message = "Name cannot be empty") String name, @NotNull @NotEmpty(message = "Lastname cannot be empty") String lastName, @NotNull @NotEmpty(message = "Password cannot be empty") String password, @NotNull @NotEmpty(message = "Email cannot be empty") String email, @NotNull Long roleId) {
         this.name = name;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
+        this.roleId = roleId;
     }
 
     public String getName() {
