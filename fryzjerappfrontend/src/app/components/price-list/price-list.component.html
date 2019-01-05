@@ -6,16 +6,17 @@
 <div class="row">
 
     <div *ngFor = "let serv of services" (click)="onSelect(serv)" class="col-lg-4">
-      <span class="btn"><U>{{serv.name}}</U></span>
+
+      <span class="btn" (click)="onSelect(serv)" [class.selected]="serv === selectedServ"><U>{{serv.name}}</U></span>
     </div>
 
 
-  <div *ngIf="selectedServ" class="col-lg-8">
+  <div *ngIf="selectedServ" class="col-lg-10">
 
-    <h2>{{selectedServ.name | uppercase}}</h2>
-    <div><span><b>Czas trwania usługi: </b></span>{{selectedServ.duration}}</div>
-    <div><span><b>Cena usługi: </b></span>{{selectedServ.price}}</div>
-    <div><span><b>Opis usługi: </b></span><br>{{selectedServ.description}}</div>
+    <h2 class="tit">{{selectedServ.name | uppercase}}</h2>
+    <div><span class="time">Czas trwania usługi: </span>{{selectedServ.duration}}</div>
+    <div><span  class="price">Cena usługi: </span>{{selectedServ.price}}</div>
+    <div class="descr"><span>Opis usługi: </span><br>{{selectedServ.description}}</div>
 
 
   </div>

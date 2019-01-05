@@ -1,0 +1,6 @@
+<div>
+  <select [(ngModel)]="chosenService" (change)="serviceSelect()" >
+    <option selected>Wybierz usluge!</option>
+    <option *ngFor="let service of services"  [ngValue]="service">{{service.name}}</option>
+  </select>
+</div>
