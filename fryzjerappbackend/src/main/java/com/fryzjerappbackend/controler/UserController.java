@@ -1,6 +1,7 @@
 package com.fryzjerappbackend.controler;
 
 
+import com.fryzjerappbackend.exception.EmailExistsException;
 import com.fryzjerappbackend.model.User;
 import com.fryzjerappbackend.service.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -42,8 +43,8 @@ public class UserController {
     @CrossOrigin
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody User user) {
+    public void createUser(@RequestBody User user) throws EmailExistsException {
         LOG.info("User {} has been created.", user);
-        userService.createUser(user);
+        userService.registerNewUserAccount(user);
     }
 }

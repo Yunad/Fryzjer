@@ -26,7 +26,7 @@ public class RoleController {
         roleService.createRole(role);
     }
 
-    @GetMapping("get")
+    @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<Role> getRoles() {
         return roleService.getAllRoles();
