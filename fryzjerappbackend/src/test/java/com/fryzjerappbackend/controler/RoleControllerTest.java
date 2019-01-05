@@ -1,5 +1,6 @@
 package com.fryzjerappbackend.controler;
 
+import com.fryzjerappbackend.model.Role;
 import com.fryzjerappbackend.model.User;
 import com.fryzjerappbackend.repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
@@ -35,7 +36,8 @@ public class RoleControllerTest extends AbstractTransactionalTestNGSpringContext
 
     @BeforeMethod
     public void testInit() {
-        entityManager.persist(new User("name", "lastName", "password", "email"));
+        entityManager.persist(new Role(1L,"Pracownik"));
+        entityManager.persist(new User("name", "lastName", "password", "email", 1L));
     }
 
     @Test
@@ -48,6 +50,7 @@ public class RoleControllerTest extends AbstractTransactionalTestNGSpringContext
             Assert.assertEquals(user1.getEmail(), "email");
             Assert.assertEquals(user1.getLastName(), "lastName");
             Assert.assertEquals(user1.getPassword(), "password");
+            Assert.assertEquals(user1.getRoleId().compareTo(1L), 0);
         }
     }
 

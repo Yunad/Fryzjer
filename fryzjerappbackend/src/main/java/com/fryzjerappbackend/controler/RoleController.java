@@ -12,20 +12,21 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/role")
 public class RoleController {
     private static final Logger LOG = LogManager.getLogger(RoleController.class);
 
     @Autowired
     private RoleService roleService;
 
-    @PostMapping("/create/role")
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createRole(@RequestBody Role role) {
+        LOG.info("Role {} has been created.");
         roleService.createRole(role);
     }
 
-    @GetMapping("get/roles")
+    @GetMapping("get")
     @ResponseStatus(HttpStatus.OK)
     public List<Role> getRoles() {
         return roleService.getAllRoles();

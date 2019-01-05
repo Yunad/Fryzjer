@@ -3,7 +3,6 @@ package com;
 import com.fryzjerappbackend.repository.RoleRepository;
 import com.fryzjerappbackend.repository.ServiceRepository;
 import com.fryzjerappbackend.repository.UserRepository;
-import com.fryzjerappbackend.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.ApplicationArguments;

@@ -4,19 +4,26 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "UserAppointments")
-public class UserAppointment {
+public class UserServiceRelation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    @NotNull
-    @Column(name = "userId")
-    private Long userId;
-    @NotNull
-    @Column(name = "appointmentId")
-    private Long appointmentId;
 
-    public UserAppointment() {
+    @Column(name = "userId")
+    @NotNull
+    private Long userId;
+
+    @Column(name = "serviceId")
+    @NotNull
+    private Long serviceId;
+
+    public UserServiceRelation() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Long getUserId() {
@@ -27,25 +34,20 @@ public class UserAppointment {
         this.userId = userId;
     }
 
-    public Long getAppointmentId() {
-        return appointmentId;
+    public Long getServiceId() {
+        return serviceId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setAppointmentId(Long appointmentId) {
-
-        this.appointmentId = appointmentId;
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
     }
 
     @Override
     public String toString() {
-        return "UserAppointment{" +
+        return "UserServiceRelation{" +
                 "id=" + id +
                 ", userId=" + userId +
-                ", appointmentId=" + appointmentId +
+                ", serviceId=" + serviceId +
                 '}';
     }
 }

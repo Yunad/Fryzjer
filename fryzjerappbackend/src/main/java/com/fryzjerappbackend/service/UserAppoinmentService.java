@@ -1,6 +1,5 @@
 package com.fryzjerappbackend.service;
 
-import com.fryzjerappbackend.model.Role;
 import com.fryzjerappbackend.model.UserAppointment;
 import com.fryzjerappbackend.repository.UserAppoinmentServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;

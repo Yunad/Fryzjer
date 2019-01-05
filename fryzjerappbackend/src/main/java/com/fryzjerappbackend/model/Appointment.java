@@ -53,4 +53,13 @@ public class Appointment {
         this.serviceId = serviceId;
     }
 
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id=" + id +
+                ", date='" + date + '\'' +
+                ", serviceId=" + serviceId +
+                ", userAppointment=" + userAppointment +
+                '}';
+    }
 }
