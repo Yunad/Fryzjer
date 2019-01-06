@@ -1,5 +1,5 @@
-import { AppPage } from './app.po';
-import { browser, by, element } from 'protractor';
+import {AppPage} from './app.po';
+import {browser, by, element} from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -21,7 +21,7 @@ describe('workspace-project App', () => {
   it('Po naciśnięciu przycisku Home wyświetla stronę główną ', () => {
     page.navigateTo();
     page.getHomeButton().click();
-    expect(browser.getCurrentUrl()).toEqual("http://localhost:4200/");
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/');
   });
 
   it('Wyświetla przycisk Login', () => {
@@ -32,7 +32,7 @@ describe('workspace-project App', () => {
   it('Po naciśnięciu przycisku Login wyświetla stonę logowania', () => {
     page.navigateTo();
     page.getLoginButton().click();
-    expect(browser.getCurrentUrl()).toEqual("http://localhost:4200/login");
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/login');
   });
 
   it('Wyświetla przycisk Register', () => {
@@ -43,7 +43,7 @@ describe('workspace-project App', () => {
   it('Po naciśnięciu przycisku Register wyświetla stronę rejestracji', () => {
     page.navigateTo();
     page.getRegisterButton().click();
-    expect(browser.getCurrentUrl()).toEqual("http://localhost:4200/register");
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/register');
   });
 
   it('Wyświetla stronę Register - napis Zarejestruj się', () => {
@@ -61,7 +61,7 @@ describe('workspace-project App', () => {
   it('Po naciśnięciu przycisku Cennik wyświetla usługi fryzjerskie', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect(browser.getCurrentUrl()).toEqual("http://localhost:4200/priceList");
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/priceList');
   });
 
   it('Wyświetla stronę z cennikiem - napis Nasze usługi fryzjerskie', () => {
@@ -73,73 +73,73 @@ describe('workspace-project App', () => {
   it('Wyświetla stronę z cennikiem - tabela z usługą Strzyżenie męskie', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList1().getText()).toEqual('Strzyżenie męskie');
+    expect(page.getPriceList1().getText()).toEqual('Strzyżenie męskie');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Strzyżenie damskie', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList2().getText()).toEqual('Strzyżenie damskie');
+    expect(page.getPriceList2().getText()).toEqual('Strzyżenie damskie');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Farbowanie włosów', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList3().getText()).toEqual('Farbowanie włosów');
+    expect(page.getPriceList3().getText()).toEqual('Farbowanie włosów');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Klasyczna koloryzacja włosów', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList4().getText()).toEqual('Klasyczne koloryzacja włosów');
+    expect(page.getPriceList4().getText()).toEqual('Klasyczne koloryzacja włosów');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Balayage', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList5().getText()).toEqual('Balayage');
+    expect(page.getPriceList5().getText()).toEqual('Balayage');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Dekoloryzacja włosów', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList6().getText()).toEqual('Dekoloryzacja włosów');
+    expect(page.getPriceList6().getText()).toEqual('Dekoloryzacja włosów');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Strzyżenie grzywki', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList7().getText()).toEqual('Strzyżenie grzywki');
+    expect(page.getPriceList7().getText()).toEqual('Strzyżenie grzywki');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Modelowanie włosów', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList8().getText()).toEqual('Modelowanie włosów');
+    expect(page.getPriceList8().getText()).toEqual('Modelowanie włosów');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Pielęgnacja włosów', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList9().getText()).toEqual('Pielęgnacja włosów');
+    expect(page.getPriceList9().getText()).toEqual('Pielęgnacja włosów');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Przedłuzanie włosów', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList10().getText()).toEqual('Przedłużanie włosów');
+    expect(page.getPriceList10().getText()).toEqual('Przedłużanie włosów');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Zagęszczanie włosów', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList11().getText()).toEqual('Zagęszczanie włosów');
+    expect(page.getPriceList11().getText()).toEqual('Zagęszczanie włosów');
   });
 
   it('Wyświetla stronę z cennikiem - tabela z usługą Doczepianie włosów', () => {
     page.navigateTo();
     page.getPriceButton().click();
-    expect (page.getPriceList12().getText()).toEqual('Doczepianie włosów');
+    expect(page.getPriceList12().getText()).toEqual('Doczepianie włosów');
   });
 
   it('Wyświetla przycisk Zaloguj - okno logowania', () => {
