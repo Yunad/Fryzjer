@@ -1,12 +1,9 @@
-import {browser, by, element} from 'protractor';
+import {by, element} from 'protractor';
 
-export class AppPage {
-  navigateTo() {
-    return browser.get('/');
-  }
+export class MainPageComponents {
 
-  getParagraphText() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > div > p.Butlog > b'));
+  getLogoImg() {
+    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-3 > img'));
   }
 
   getHomeButton() {
@@ -21,13 +18,33 @@ export class AppPage {
     return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ul > li:nth-child(3) > a > b'));
   }
 
-  getRegisterName() {
-    return element(by.css('body > app-root > app-register > div > header > div > div > div.col-sm-6.col-md-7.col-lg-8 > h1'));
-  }
-
   getPriceButton() {
     return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ul > li:nth-child(4) > a > b'));
   }
+
+  getCarouselImg() {
+    return element(by.css('body > app-root > app-homepage > div > app-carousel > ngb-carousel > div > div.carousel-item.active > img'));
+  }
+
+  getFooterLabel1() {
+    return element(by.css('body > app-root > app-homepage > div > app-footer > footer > div > table > td.rig'));
+  }
+
+  getFooterLabel2() {
+    return element(by.css('body > app-root > app-homepage > div > app-footer > footer > div > table > td:nth-child(2) > a'));
+  }
+
+  getFooterLabel3() {
+    return element(by.css('body > app-root > app-homepage > div > app-footer > footer > div > table > td:nth-child(3) > a'));
+  }
+
+  getFooterLabel4() {
+    return element(by.css('body > app-root > app-homepage > div > app-footer > footer > div > table > td.lef'));
+  }
+
+}
+
+export class PriceListViewComponents {
 
   getPriceListName() {
     return element(by.css('body > app-root > app-price-list > div > header > h2 > b'));
@@ -79,6 +96,26 @@ export class AppPage {
 
   getPriceList12() {
     return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(12) > span > u'));
+  }
+
+}
+
+export class RegisterViewComponents {
+
+  getRegisterName() {
+    return element(by.css('body > app-root > app-register > div > header > div > div > div.col-sm-6.col-md-7.col-lg-8 > h1'));
+  }
+
+  getRegisterImg() {
+    return element(by.css('body > app-root > app-register > div > header > div > div > div.col-sm-6.col-md-7.col-lg-8 > img'));
+  }
+
+}
+
+export class LoginViewComponents {
+
+  getLoginLabel() {
+    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > div > p.Butlog > b'));
   }
 
   getLogin2Button() {
