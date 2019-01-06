@@ -6,11 +6,11 @@ export class AppPage {
   }
 
   getParagraphText() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > div > p.Butlog > b')).getText();
+    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > div > p.Butlog > b'));
   }
 
   getHomeButton() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ul > li:nth-child(1) > a > b'))
+    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ul > li:nth-child(1) > a > b'));
   }
 
   getLoginButton() {

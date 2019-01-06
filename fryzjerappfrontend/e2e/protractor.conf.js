@@ -10,8 +10,8 @@ exports.config = {
   ],
   capabilities: {
     'browserName': 'chrome',
-    'chromeOptions':{
-      'args':[
+    'chromeOptions': {
+      'args': [
         '--start-maximized'
       ]
     }

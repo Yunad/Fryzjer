@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('Wyświetla napis Zaloguj się na stronie głównej', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Zaloguj się!!!');
+    expect(page.getParagraphText().getText()).toEqual('Zaloguj się!!!');
   });
 
   it('Wyświetla przycisk Home', () => {
