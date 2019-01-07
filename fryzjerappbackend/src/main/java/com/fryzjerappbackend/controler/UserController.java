@@ -39,6 +39,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @CrossOrigin
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody User user) {

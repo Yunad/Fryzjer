@@ -19,6 +19,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {UtilityService} from "./services/utility.service";
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { ReservationSidebarComponent } from './components/reservation/reservation-sidebar/reservation-sidebar.component';
+import {MyDatePickerModule} from 'mydatepicker';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -49,6 +50,7 @@ const routes: Routes = [
     NgbModule,
     FormsModule,
     HttpClientModule,
+    MyDatePickerModule,
     RouterModule.forRoot(routes),
   ],
   providers: [
