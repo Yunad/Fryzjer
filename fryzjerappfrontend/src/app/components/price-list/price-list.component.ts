@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SERV} from "./services";
-import {Serv} from "./services";
-import {UtilityService} from "../../services/utility.service";
+import {Service} from './services';
+import {UtilityService} from '../../services/utility.service';
 
 @Component({
   selector: 'app-price-list',
@@ -10,19 +9,19 @@ import {UtilityService} from "../../services/utility.service";
 })
 export class PriceListComponent implements OnInit {
 
-  services: Serv[];
-  selectedServ: Serv;
+  services: Service[];
+  selectedService: Service;
 
   constructor(private utilityService: UtilityService) {
   }
 
-  onSelect(serv: Serv): void {
-    this.selectedServ = serv;
+  onSelect(serv: Service): void {
+    this.selectedService = serv;
   }
 
   private fetchServices(): void {
     this.utilityService.getServices().subscribe(
-      (resp: Serv[]) => {
+      (resp: Service[]) => {
         this.services = resp;
       }
     );

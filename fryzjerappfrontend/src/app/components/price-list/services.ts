@@ -1,4 +1,4 @@
-export class Serv {
+export class Service {
   id: number;
   name: string;
   duration: string;
@@ -6,7 +6,7 @@ export class Serv {
   description: string;
 }
 
-export const SERV: Serv[] = [
+export const SERV: Service[] = [
   {id:1,name:'Strzyżenie męskie',duration:'15 - 30 min',price:'25 PLN',description:'Podstawowy pakiet usług dla Panów. Fryzjer rozpoczyna od mycia włosów szamponem pielęgnacyjnym i wykonuje relaksujący masaż skóry głowy. Następnie nakłada na włosy odżywkę. Kolejny etap to to precyzyjne strzyżenie męskie za pomocą nożyczek i/lub maszynki. Usługę kończy modelowanie włosów zgodne z życzeniem Klienta'},
   {id:2,name:'Strzyżenie damskie',duration:'45 - 60 min',price:'100 PLN',description:'Podstawowy pakiet usług dla Pań. Fryzjer rozpoczyna od mycia włosów szamponem pielęgnacyjnym i wykonuje relaksujący masaż skóry głowy. Następnie nakłada na włosy odżywkę. Kolejny etap to precyzyjne strzyżenie damskie za pomocą nożyczek i/lub maszynk. Końcówka usługi to modelowanie włosów zgodne z życzeniem Klientki.'},
   {id:3,name:'Farbowanie włosów',duration:'60 - 90 min',price:'60 PLN',description:'Farbowanie włosów jest jednym z najpopularniejszych usług wykonywanych w salonach fryzjerskich Lovely Look. Kolor włosów dobrze dobrany do naszej osobowości może dodać nam pewności siebie i energii. Niezależnie do tego, czy jest to kolor pełny, wyrazisty czy delikatny i subtelny, daje on „nowe życie” włosom, wydobywa zalety twarzy lub tuszuje cechy przez nas nielubiane. Koloryzacja włosów wykonywana jest przez nas profesjonalnymi farbami Indola.'},

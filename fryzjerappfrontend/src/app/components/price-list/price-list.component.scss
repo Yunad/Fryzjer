@@ -1,20 +1,14 @@
 .margin {
-  //padding-top: 0;
   background-color: beige;
-  //width: max-content;
   text-align: center;
-  // margin: 0%;
-
 }
 
 .btn {
-  // margin-bottom: 0%;
   margin-top: 2%;
   margin-left: 11%;
   cursor: pointer;
   color: black;
   background-color: chocolate;
-
   font-weight: bold;
   font-family: Georgia;
   width: 270px;
@@ -22,9 +16,6 @@
   &:hover {
     background-color: darkorange;
   }
-
-
-  //position: center;
 }
 
 header {
@@ -52,26 +43,28 @@ b {
 }
 
 
-
 .selected {
   background-color: gold;
 }
 
 span {
-font-weight: bold;
+  font-weight: bold;
 }
 
 .price {
   padding-right: 8%;
   padding-left: 65%;
 }
+
 .time {
   padding-left: 65%;
 }
+
 .tit {
   padding-left: 8%;
   padding-top: 4%;
 }
+
 .descr {
   padding-left: 8%;
   padding-top: 3%;
