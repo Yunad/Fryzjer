@@ -11,6 +11,7 @@ import java.util.Set;
 public class Service {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
     @NotNull
@@ -22,6 +23,9 @@ public class Service {
     @NotNull
     @Column(name = "duration")
     private double duration;
+    @NotNull
+    @Column(name = "description")
+    private String description;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "serviceId")
@@ -75,6 +79,14 @@ public class Service {
 
     public long getId() {
         return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
