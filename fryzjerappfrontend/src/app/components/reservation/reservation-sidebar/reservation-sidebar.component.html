@@ -1,0 +1,14 @@
+<div>
+  <select [(ngModel)]="chosenService" (change)="serviceSelect()" >
+    <option selected>Wybierz usluge!</option>
+    <option *ngFor="let service of services"  [ngValue]="service">{{service.name}}</option>
+  </select>
+
+  <div>
+    <my-date-picker name="mydate"
+                    [options]="myDatePickerOptions"
+                    (dateChanged)="onDateChanged($event)"
+                    [selDate]="initialDate"
+                    [(ngModel)]="selectedDate"></my-date-picker>
+  </div>
+</div>

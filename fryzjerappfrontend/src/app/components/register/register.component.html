@@ -1,58 +1,56 @@
 <div class="container mt-4">
   <app-header></app-header>
   <header>
-  <div class="row">
-    <!--<body>-->
-    <div class="container mt-5">
+    <div class="row">
+      <!--<body>-->
+      <div class="container mt-5">
 
-      <div class="col-sm-6 col-md-5 col-lg-4">
-        <div class="header-panel">
-          <h2>Rejestracja</h2>
-        </div>
-        <div class="text-body">
-          <label for="jp1" class="head">Imię</label>
-          <input type="text" class="form-control" id="jp1">
-          <label for="jp1" class="smallText">Polne wymagane</label>
-          <br>
+        <div class="col-sm-6 col-md-5 col-lg-4">
+          <div class="header-panel">
+            <h2>Rejestracja</h2>
+          </div>
+          <div class="text-body">
+            <label for="jp1" class="head">Imię</label>
+            <input type="text" class="form-control" [(ngModel)]="firstName" id="jp1">
+            <label for="jp1" class="smallText">Polne wymagane</label>
+            <br>
 
-          <label for="jp2" class="head">Nazwisko</label>
-          <input type="text" class="form-control" id="jp2" placeholder="hasło">
-          <label for="jp2" class="smallText">Pole wymagane</label>
-          <br>
+            <label for="jp2" class="head">Nazwisko</label>
+            <input type="text" class="form-control" [(ngModel)]="lastName" id="jp2">
+            <label for="jp2" class="smallText">Pole wymagane</label>
+            <br>
 
-          <label for="jp3" class="head">E-mail</label>
-          <input type="email" class="form-control" id="jp3">
-          <label for="jp3" class="smallText">Przy użyciu tego adresu będziesz mógł się zalogować</label>
-          <br>
+            <label for="jp3" class="head">E-mail</label>
+            <input type="email" class="form-control" [(ngModel)]="email" id="jp3">
+            <label for="jp3" class="smallText">Przy użyciu tego adresu będziesz mógł się zalogować</label>
+            <br>
 
-          <label for="jp4" class="head">Login</label>
-          <input type="text" class="form-control" id="jp4">
-          <label for="jp4" class="smallText">Nie/ można zmienić nazwny/e po rejestracji</label>
-          <br>
+            <label for="jp5" class="head">Hasło</label>
+            <input type="text" class="form-control" [(ngModel)]="password" id="jp5">
+            <label for="jp5" class="smallText">Co najmniej 8 znaków</label>
+            <br>
 
-          <label for="jp5" class="head">Hasło</label>
-          <input type="text" class="form-control" id="jp5">
-          <label for="jp5" class="smallText">Co najmniej 8 znaków</label>
-          <br>
-
-          <label for="jp6" class="head">Powtórz hasło</label>
-          <input type="text" class="form-control" id="jp6">
-          <label for="jp6" class="smallText">Pole wymagane</label>
-          <br>
-          <input type="submit" class="btn" value="Utwórz konto">
-         </div>
+            <label for="jp6" class="head">Powtórz hasło</label>
+            <input type="text" class="form-control" [(ngModel)]="passwordRepeat" id="jp6">
+            <label for="jp6" class="smallText">Pole wymagane</label>
+            <br>
+            <input (click)="onSubmit()" type="submit" class="btn" value="Utwórz konto">
+            <br>
+            <p *ngIf="userInfo">{{userInfo}}</p>
+          </div>
 
         </div>
-      <div class="col-sm-6 col-md-7 col-lg-8">
-        <h1>Zarejestruj się</h1>
-          <p>Od tej chwili rezerwacja wizyty u fryzjera możliwa również on-line. Załóż darmowe konto i korzystaj ze wszystkich funkcjonalności serwisu <b>FRYZJER</b>.</p>
-        <div class="hr">&nbsp;</div>
-        <br>
-        <img class="graf" src="assets/img/img5.jpg" alt="Grafika">
+        <div class="col-sm-6 col-md-7 col-lg-8">
+          <h1>Zarejestruj się</h1>
+          <p>Od tej chwili rezerwacja wizyty u fryzjera możliwa również on-line. Załóż darmowe konto i korzystaj ze
+            wszystkich funkcjonalności serwisu <b>FRYZJER</b>.</p>
+          <div class="hr">&nbsp;</div>
+          <br>
+          <img class="graf" src="assets/img/img5.jpg" alt="Grafika">
+        </div>
       </div>
+      <!--</body>-->
     </div>
-    <!--</body>-->
-  </div>
   </header>
 </div>
 <app-footer></app-footer>
