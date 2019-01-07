@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Serv} from "../price-list/services";
+import {Component, OnInit} from '@angular/core';
+import {Service} from '../price-list/services';
 import {IMyDateModel} from 'mydatepicker';
 
 @Component({
@@ -9,12 +9,13 @@ import {IMyDateModel} from 'mydatepicker';
 })
 export class ReservationComponent implements OnInit {
 
-  public service: Serv;
+  public service: Service;
   public date: IMyDateModel;
 
-  constructor() { }
+  constructor() {
+  }
 
-  public onServiceSelect(service: Serv): void {
+  public onServiceSelect(service: Service): void {
     this.service = service;
     this.fetchAppointments();
   }
