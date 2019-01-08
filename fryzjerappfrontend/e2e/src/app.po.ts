@@ -1,106 +1,58 @@
 import {by, element} from 'protractor';
 
-export class MainPageComponents {
+function buttonPath(numberButton: number) {
+  return 'body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ' +
+    'ul > li:nth-child(' + numberButton + ') > a > b';
+}
+
+function loginViewPath(loginComponents: string) {
+  return 'body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > ' +
+    'div > ' + loginComponents;
+}
+
+export class MainPageView {
 
   getLogoImg() {
     return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-3 > img'));
   }
 
   getHomeButton() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ul > li:nth-child(1) > a > b'));
+    return element(by.css(buttonPath(1)));
   }
 
-  getLoginButton() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ul > li:nth-child(2) > a > b'));
+  getReservationButton() {
+
+    return element(by.css(buttonPath(2)));
   }
 
   getRegisterButton() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ul > li:nth-child(3) > a > b'));
+    return element(by.css(buttonPath(3)));
   }
 
   getPriceButton() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ul > li:nth-child(4) > a > b'));
+    return element(by.css(buttonPath(4)));
   }
 
   getCarouselImg() {
-    return element(by.css('body > app-root > app-homepage > div > app-carousel > ngb-carousel > div > div.carousel-item.active > img'));
+    return element(by.css('body > app-root > app-homepage > div > app-carousel > ngb-carousel > ' +
+      'div > div.carousel-item.active > img'));
   }
 
   getFooterLabel1() {
-    return element(by.css('body > app-root > app-homepage > div > app-footer > footer > div > table > td.rig'));
+    return element(by.css('body > app-root > app-homepage > div > app-footer > footer > div > table > td:nth-child(2)'));
   }
 
   getFooterLabel2() {
-    return element(by.css('body > app-root > app-homepage > div > app-footer > footer > div > table > td:nth-child(2) > a'));
-  }
-
-  getFooterLabel3() {
-    return element(by.css('body > app-root > app-homepage > div > app-footer > footer > div > table > td:nth-child(3) > a'));
-  }
-
-  getFooterLabel4() {
-    return element(by.css('body > app-root > app-homepage > div > app-footer > footer > div > table > td.lef'));
+    return element(by.css('body > app-root > app-homepage > div > app-footer > footer > div > table > td:nth-child(3)'));
   }
 
 }
 
-export class PriceListViewComponents {
-
-  getPriceListName() {
-    return element(by.css('body > app-root > app-price-list > div > header > h2 > b'));
-  }
-
-  getPriceList1() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(1) > span > u'));
-  }
-
-  getPriceList2() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(2) > span > u'));
-  }
-
-  getPriceList3() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(3) > span > u'));
-  }
-
-  getPriceList4() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(4) > span > u'));
-  }
-
-  getPriceList5() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(5) > span > u'));
-  }
-
-  getPriceList6() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(6) > span > u'));
-  }
-
-  getPriceList7() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(7) > span > u'));
-  }
-
-  getPriceList8() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(8) > span > u'));
-  }
-
-  getPriceList9() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(9) > span > u'));
-  }
-
-  getPriceList10() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(10) > span > u'));
-  }
-
-  getPriceList11() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(11) > span > u'));
-  }
-
-  getPriceList12() {
-    return element(by.css('body > app-root > app-price-list > div > header > div.row > div:nth-child(12) > span > u'));
-  }
+export class PriceListView {
 
 }
 
-export class RegisterViewComponents {
+export class RegisterView {
 
   getRegisterName() {
     return element(by.css('body > app-root > app-register > div > header > div > div > div.col-sm-6.col-md-7.col-lg-8 > h1'));
@@ -110,23 +62,43 @@ export class RegisterViewComponents {
     return element(by.css('body > app-root > app-register > div > header > div > div > div.col-sm-6.col-md-7.col-lg-8 > img'));
   }
 
+  get NameField() {
+    return element(by.css('#jp1'))
+  }
+
+  get SurnameField() {
+    return element(by.css('#jp2'))
+  }
+
+  get mailField() {
+    return element(by.css('#jp3'))
+  }
+
+  get passwordField() {
+    return element(by.css('#jp5'))
+  }
+
+  get repeatPasswourdField() {
+    return element(by.css('#jp6'))
+  }
+
 }
 
-export class LoginViewComponents {
+export class LoginView {
 
   getLoginLabel() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > div > p.Butlog > b'));
+    return element(by.css(loginViewPath('p.Butlog')));
   }
 
   getLogin2Button() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > div > button.btn'));
+    return element(by.css(loginViewPath('button.btn')));
   }
 
   getCreateAccountButton() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > div > button.btn-sm'));
+    return element(by.css(loginViewPath('button.btn-sm')));
   }
 
   getForgettenPasswordLink() {
-    return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > div > p.resent > u'));
+    return element(by.css(loginViewPath('p.resent')));
   }
 }

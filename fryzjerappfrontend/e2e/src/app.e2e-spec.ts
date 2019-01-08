@@ -1,13 +1,13 @@
-import {LoginViewComponents, MainPageComponents, PriceListViewComponents, RegisterViewComponents} from './app.po';
+import {LoginView, MainPageView, PriceListView, RegisterView} from './app.po';
 import {browser} from 'protractor';
 
 describe('Main page', () => {
 
-  let page: MainPageComponents;
+  let page: MainPageView;
 
   beforeEach(() => {
     browser.get('/');
-    page = new MainPageComponents();
+    page = new MainPageView();
   });
 
   it('Wyświetla logo', () => {
@@ -15,7 +15,7 @@ describe('Main page', () => {
   });
 
   it('Wyświetla przycisk: Home', () => {
-    expect(page.getHomeButton().getText()).toEqual('Home');
+    expect(page.getHomeButton().isPresent()).toBe(true);
   });
 
   it('Po naciśnięciu przycisku Home wyświetla stronę główną', () => {
@@ -23,17 +23,17 @@ describe('Main page', () => {
     expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/');
   });
 
-  it('Wyświetla przycisk: Login', () => {
-    expect(page.getLoginButton().getText()).toEqual('Login');
+  it('Wyświetla przycisk: Rezerwacja', () => {
+    expect(page.getReservationButton().isPresent()).toBe(true);
   });
 
-  it('Po naciśnięciu przycisku Login wyświetla stronę logowania', () => {
-    page.getLoginButton().click();
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/login');
+  it('Po naciśnięciu przycisku Rezerwacja wyświetla stronę rezerwacji', () => {
+    page.getReservationButton().click();
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/reservation');
   });
 
   it('Wyświetla przycisk: Register', () => {
-    expect(page.getRegisterButton().getText()).toEqual('Register');
+    expect(page.getRegisterButton().isPresent()).toBe(true);
   });
 
   it('Po naciśnięciu przycisku Register wyświetla stronę rejestracji', () => {
@@ -42,7 +42,7 @@ describe('Main page', () => {
   });
 
   it('Wyświetla przycisk: Cennik', () => {
-    expect(page.getPriceButton().getText()).toEqual('Cennik');
+    expect(page.getPriceButton().isPresent()).toBe(true);
   });
 
   it('Po naciśnięciu przycisku Cennik wyświetla usługi fryzjerskie', () => {
@@ -54,31 +54,23 @@ describe('Main page', () => {
     expect(page.getCarouselImg().isPresent()).toBe(true);
   });
 
-  it('Wyświetla: COPYRIGHT @ 2018 w stopce', () => {
-    expect(page.getFooterLabel1().getText()).toEqual('COPYRIGHT @ 2018');
+  it('Wyświetla link: KONTAKT w stopce', () => {
+    expect(page.getFooterLabel1().isPresent()).toBe(true);
   });
 
-  it('Wyświetla: KONTAKT w stopce', () => {
-    expect(page.getFooterLabel2().getText()).toEqual('KONTAKT');
-  });
-
-  it('Wyświetla: REGULAMIN w stopce', () => {
-    expect(page.getFooterLabel3().getText()).toEqual('REGULAMIN');
-  });
-
-  it('Wyświetla: byJunk22 w stopce', () => {
-    expect(page.getFooterLabel4().getText()).toEqual('by Junk22');
+  it('Wyświetla link: REGULAMIN w stopce', () => {
+    expect(page.getFooterLabel2().isPresent()).toBe(true);
   });
 
 });
 
 describe('Login view', () => {
 
-  let login: LoginViewComponents;
+  let login: LoginView;
 
   beforeEach(() => {
     browser.get('/');
-    login = new LoginViewComponents();
+    login = new LoginView();
   });
 
   it('Wyświetla napis: Zaloguj się', () => {
@@ -101,11 +93,11 @@ describe('Login view', () => {
 
 describe('Register view', () => {
 
-  let register: RegisterViewComponents;
+  let register: RegisterView;
 
   beforeEach(() => {
     browser.get('/register');
-    register = new RegisterViewComponents();
+    register = new RegisterView();
   });
 
   it('Wyświetla napis: Zarejestruj się', () => {
@@ -119,63 +111,11 @@ describe('Register view', () => {
 });
 
 describe('Price List view', () => {
-  let price: PriceListViewComponents;
+  let price: PriceListView;
 
   beforeEach(() => {
     browser.get('/priceList');
-    price = new PriceListViewComponents();
-  });
-
-  it('Wyświetla napis: Nasze usługi fryzjerskie', () => {
-    expect(price.getPriceListName().getText()).toEqual('Nasze usługi fryzjerskie');
-  });
-
-  it('Wyświetla w tabeli usługę: Strzyżenie męskie', () => {
-    expect(price.getPriceList1().getText()).toEqual('Strzyżenie męskie');
-  });
-
-  it('Wyświetla w tabeli usługę: Strzyżenie damskie', () => {
-    expect(price.getPriceList2().getText()).toEqual('Strzyżenie damskie');
-  });
-
-  it('Wyświetla w tabeli usługę: Farbowanie włosów', () => {
-    expect(price.getPriceList3().getText()).toEqual('Farbowanie włosów');
-  });
-
-  it('Wyświetla w tabeli usługę: Klasyczna koloryzacja włosów', () => {
-    expect(price.getPriceList4().getText()).toEqual('Klasyczne koloryzacja włosów');
-  });
-
-  it('Wyświetla w tabeli usługę: Balayage', () => {
-    expect(price.getPriceList5().getText()).toEqual('Balayage');
-  });
-
-  it('Wyświetla w tabeli usługę: Dekoloryzacja włosów', () => {
-    expect(price.getPriceList6().getText()).toEqual('Dekoloryzacja włosów');
-  });
-
-  it('Wyświetla w tabeli usługę: Strzyżenie grzywki', () => {
-    expect(price.getPriceList7().getText()).toEqual('Strzyżenie grzywki');
-  });
-
-  it('Wyświetla w tabeli usługę: Modelowanie włosów', () => {
-    expect(price.getPriceList8().getText()).toEqual('Modelowanie włosów');
-  });
-
-  it('Wyświetla w tabeli usługę: Pielęgnacja włosów', () => {
-    expect(price.getPriceList9().getText()).toEqual('Pielęgnacja włosów');
-  });
-
-  it('Wyświetla w tabeli usługę: Przedłuzanie włosów', () => {
-    expect(price.getPriceList10().getText()).toEqual('Przedłużanie włosów');
-  });
-
-  it('Wyświetla w tabeli usługę: Zagęszczanie włosów', () => {
-    expect(price.getPriceList11().getText()).toEqual('Zagęszczanie włosów');
-  });
-
-  it('Wyświetla w tabeli usługę: Doczepianie włosów', () => {
-    expect(price.getPriceList12().getText()).toEqual('Doczepianie włosów');
+    price = new PriceListView();
   });
 
 });
