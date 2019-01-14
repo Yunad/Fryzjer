@@ -1,6 +1,5 @@
 package com.fryzjerappbackend.controler;
 
-import com.fryzjerappbackend.model.Role;
 import com.fryzjerappbackend.model.User;
 import com.fryzjerappbackend.repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
@@ -24,8 +23,8 @@ import java.util.Optional;
 @AutoConfigureTestEntityManager
 @AutoConfigureDataJpa
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class RoleControllerTest extends AbstractTransactionalTestNGSpringContextTests {
-    private static final Logger LOG = LogManager.getLogger(RoleControllerTest.class);
+public class UserTests extends AbstractTransactionalTestNGSpringContextTests {
+    private static final Logger LOG = LogManager.getLogger(UserTests.class);
     @Autowired
     private TestEntityManager entityManager;
 
