@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/relation")
 public class UserServiceRelationController {
 
@@ -17,7 +17,7 @@ public class UserServiceRelationController {
     UserServiceRelationService userServiceRelationService;
 
 
-    @GetMapping(path = "/get")
+    @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<UserServiceRelation> getAllUsersServices() {
         return userServiceRelationService.getAllUserServiceRelations();

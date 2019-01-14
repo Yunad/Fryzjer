@@ -20,6 +20,9 @@ import {UtilityService} from './services/utility.service';
 import {ReservationComponent} from './components/reservation/reservation.component';
 import {ReservationSidebarComponent} from './components/reservation/reservation-sidebar/reservation-sidebar.component';
 import {MyDatePickerModule} from 'mydatepicker';
+import {TestBoxComponent} from './components/test-box/test-box.component';
+import {EmployeeComponent} from './components/employee/employee.component';
+import {ListemployeeService} from "./services/listemployee.service";
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -44,6 +47,8 @@ const routes: Routes = [
     ReminderComponent,
     ReservationComponent,
     ReservationSidebarComponent,
+    TestBoxComponent,
+    EmployeeComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,8 @@ const routes: Routes = [
   ],
   providers: [
     UserService,
-    UtilityService
+    UtilityService,
+    ListemployeeService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,26 +1,27 @@
 <div class="container mt-4">
   <app-header></app-header>
-<header>
-  <h2><b>Nasze usługi fryzjerskie</b></h2>
-  <div class="hr">&nbsp;</div>
-<div class="row">
+  <header>
+    <h2><b>Nasze usługi fryzjerskie</b></h2>
+    <div class="hr">&nbsp;</div>
+    <div class="row">
 
-    <div *ngFor = "let serv of services" (click)="onSelect(serv)" class="col-lg-4">
+      <div *ngFor="let serv of services" (click)="onSelect(serv)" class="col-lg-4">
 
-      <span class="btn" (click)="onSelect(serv)" [class.selected]="serv === selectedService"><U>{{serv.name}}</U></span>
+        <span class="btn" (click)="onSelect(serv)"
+              [class.selected]="serv === selectedService"><U>{{serv.name}}</U></span>
+      </div>
+
+
+      <div *ngIf="selectedService" class="col-lg-10">
+
+        <h2 class="tit">{{selectedService.name | uppercase}}</h2>
+        <div><span class="time">Czas trwania usługi: </span>{{selectedService.duration}}</div>
+        <div><span class="price">Cena usługi: </span>{{selectedService.price}}</div>
+        <div class="descr"><span>Opis usługi: </span><br>{{selectedService.description}}</div>
+
+
+      </div>
     </div>
-
-
-  <div *ngIf="selectedService" class="col-lg-10">
-
-    <h2 class="tit">{{selectedService.name | uppercase}}</h2>
-    <div><span class="time">Czas trwania usługi: </span>{{selectedService.duration}}</div>
-    <div><span  class="price">Cena usługi: </span>{{selectedService.price}}</div>
-    <div class="descr"><span>Opis usługi: </span><br>{{selectedService.description}}</div>
-
-
-  </div>
-</div>
-</header>
+  </header>
 </div>
 <app-footer></app-footer>

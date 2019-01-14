@@ -1,6 +1,7 @@
 .custom_nav {
-  margin-top: 46%;
+  margin-top: 47.5%;
   padding-left: 0%;
+  margin-bottom: 0;
   position: absolute;
 
   li {
@@ -8,20 +9,18 @@
     float: left;
     padding: 10px 10px;
     background: chocolate;
-    box-shadow: 5px 7px 10px black;
+    //box-shadow: 5px 7px 10px black;
     font-family: Georgia;
     cursor: context-menu;
 
 
-
-
     &:hover {
       background: burlywood;
-      transform: scale(1.0);
-      transition: ease-in-out;
-      transition-duration: .4s;
-      font-weight: bold;
-      font-size: larger;
+      // transform: scale(1.0);
+      // transition: ease-in-out;
+      //transition-duration: .4s;
+      // font-weight: bold;
+      // font-size: larger;
 
     }
 
@@ -36,3 +35,5 @@
     }
   }
 }
+
+
