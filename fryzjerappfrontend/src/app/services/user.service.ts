@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 })
 
 export class UserService {
-  public backendUrl: string = "http://localhost:8082/user";
+  public backendUrl: string = "http://localhost:8080/user";
 
   constructor(private http: HttpClient) {}
 

@@ -6,7 +6,7 @@ import { HttpClient} from "@angular/common/http";
 })
 export class UtilityService {
 
-  public backendUrl: string = "http://localhost:8082/service/get";
+  public backendUrl: string = "http://localhost:8080/service/get";
 
   constructor(private http: HttpClient ) {
 
