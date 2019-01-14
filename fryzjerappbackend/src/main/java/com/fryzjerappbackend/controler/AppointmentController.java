@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/appointment")
-public class AppointmentController {
+public class AppointmentController{
     private static final Logger LOG = LogManager.getLogger(com.fryzjerappbackend.controler.AppointmentController.class);
 
     @Autowired

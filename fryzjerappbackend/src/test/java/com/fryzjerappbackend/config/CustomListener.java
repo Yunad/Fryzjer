@@ -12,5 +12,7 @@ public class CustomListener extends TestListenerAdapter {
         LOG.info(" Test{}",iTestResult.getName());
         super.onTestSuccess(iTestResult);
     }
+
+
 }
 

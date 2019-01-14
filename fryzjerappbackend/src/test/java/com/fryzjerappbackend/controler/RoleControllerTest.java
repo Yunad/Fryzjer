@@ -36,7 +36,7 @@ public class RoleControllerTest extends AbstractTransactionalTestNGSpringContext
 
     @BeforeMethod
     public void testInit() {
-        entityManager.persist(new Role(1L,"Pracownik"));
+//        entityManager.persist(new Role(1L,"Pracownik"));
         entityManager.persist(new User("name", "lastName", "password", "email", 1L));
     }
 
