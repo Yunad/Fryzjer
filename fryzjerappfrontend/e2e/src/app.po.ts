@@ -1,5 +1,6 @@
 import {by, element} from 'protractor';
 
+
 function buttonPath(numberButton: number) {
   return 'body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ' +
     'ul > li:nth-child(' + numberButton + ') > a > b';
@@ -8,6 +9,14 @@ function buttonPath(numberButton: number) {
 function loginViewPath(loginComponents: string) {
   return 'body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > ' +
     'div > ' + loginComponents;
+}
+
+function registerViewPath(registerComponents: string) {
+  return 'body > app-root > app-register > div > header > div > div > div.col-sm-6.' + registerComponents;
+}
+
+function reservationViewPath(reservationComponents: string) {
+  return 'body > app-root > app-reservation > div > div > div.col-lg-4 > app-reservation-sidebar > div > ' + reservationComponents;
 }
 
 export class MainPageView {
@@ -48,38 +57,43 @@ export class MainPageView {
 
 }
 
-export class PriceListView {
-
-}
-
 export class RegisterView {
 
   getRegisterName() {
-    return element(by.css('body > app-root > app-register > div > header > div > div > div.col-sm-6.col-md-7.col-lg-8 > h1'));
+    return element(by.css(registerViewPath('col-md-7.col-lg-8 > h1')));
   }
 
   getRegisterImg() {
-    return element(by.css('body > app-root > app-register > div > header > div > div > div.col-sm-6.col-md-7.col-lg-8 > img'));
+    return element(by.css(registerViewPath('col-md-7.col-lg-8 > img')));
   }
 
-  get NameField() {
-    return element(by.css('#jp1'))
+  getName() {
+
+    return element(by.css('#jp1'));
   }
 
-  get SurnameField() {
-    return element(by.css('#jp2'))
+  getSurname() {
+    return element(by.css('#jp2'));
   }
 
-  get mailField() {
-    return element(by.css('#jp3'))
+  getMail() {
+    return element(by.css('#jp3'));
   }
 
-  get passwordField() {
-    return element(by.css('#jp5'))
+  getPassword() {
+    return element(by.css('#jp5'));
   }
 
-  get repeatPasswourdField() {
-    return element(by.css('#jp6'))
+  getRepeatPasswourd() {
+    return element(by.css('#jp6'));
+  }
+
+  getRegisterButton() {
+    return element(by.css(registerViewPath('col-md-5.col-lg-4 > div.text-body > input.btn')));
+  }
+
+  getValidationText() {
+    return element(by.css(registerViewPath('col-md-5.col-lg-4 > div.text-body > p')));
   }
 
 }
@@ -101,4 +115,20 @@ export class LoginView {
   getForgettenPasswordLink() {
     return element(by.css(loginViewPath('p.resent')));
   }
+}
+
+export class ReservationView {
+
+  getCalendar() {
+    return element(by.css(reservationViewPath('div > my-date-picker > div > div')));
+  }
+
+  getChoiceServices() {
+    return element(by.css(reservationViewPath('select')));
+  }
+
+}
+
+export class PriceListView {
+
 }
