@@ -1,0 +1,19 @@
+header {
+  background: beige;
+}
+
+.box {
+  display: block;
+}
+.margin {
+  display: block;
+}
+.margin-bottom {
+  padding: 0 0.625rem;
+  width: 33.3333%;
+  margin-right: 0;
+  float: left;
+}
+h2 {
+  text-align: center;
+}
