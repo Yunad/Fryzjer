@@ -52,4 +52,8 @@ public class UserService {
         user.setRoleId(2L);
         userRepository.save(user);
     }
+
+    public List<User> getUserByRoleId(Long id) {
+        return userRepository.findUserByRoleId(id);
+    }
 }
