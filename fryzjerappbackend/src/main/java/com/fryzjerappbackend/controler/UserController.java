@@ -47,4 +47,9 @@ public class UserController {
         LOG.info("User {} has been created.", user);
         userService.registerNewUserAccount(user);
     }
+
+    @GetMapping("/get/role/{roleId}")
+    public List<User> findByRoleId(@PathVariable("roleId") Long id) {
+        return userService.getUserByRoleId(id);
+    }
 }
