@@ -14,7 +14,7 @@ import java.util.List;
 public class UserServiceRelationController {
 
     @Autowired
-    UserServiceRelationService userServiceRelationService;
+    private UserServiceRelationService userServiceRelationService;
 
 
     @GetMapping("/get")

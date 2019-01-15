@@ -21,8 +21,4 @@ public class BcryptGeneratorTest {
         Assert.assertNotEquals(PASSWORD,hashedPassword,"Passwords were the same. Test failure");
     }
 
-    @Test
-    public void validateDecodedPassword(){
-
-    }
 }
