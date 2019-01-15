@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Service} from '../../price-list/services';
+import {Permission} from "./permissions";
 import {UtilityService} from '../../../services/utility.service';
+import { PermissionService} from "../../../services/permission.service";
 import {IMyDpOptions, IMyDate, IMyDateModel} from 'mydatepicker';
 import * as moment from 'moment';
 import {Moment} from 'moment';
@@ -35,8 +37,9 @@ export class ReservationSidebarComponent implements OnInit {
 
   public chosenService: Service;
   public services: Service[];
+  public permission: Permission[];
 
-  constructor(private utilityService: UtilityService) {
+  constructor(private utilityService: UtilityService, private permissionsService: PermissionService) {
   }
 
   private fetchServices(): void {
@@ -47,6 +50,13 @@ export class ReservationSidebarComponent implements OnInit {
     )
   }
 
+  private fetchPermissions(): void {
+    this.permissionsService.getPermissions().subscribe(
+      (resp: Permission[]) => {
+        this.permission = resp;
+      }
+    )
+  }
   public serviceSelect(): void {
     this.selectedService.emit(this.chosenService);
   }
@@ -57,6 +67,7 @@ export class ReservationSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.fetchServices();
+    this.fetchPermissions();
     console.log(this.today);
     console.log(this.disableUntilDate);
   }

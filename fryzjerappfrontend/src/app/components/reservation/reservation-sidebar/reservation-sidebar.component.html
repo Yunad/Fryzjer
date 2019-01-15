@@ -1,9 +1,11 @@
 <div>
-  <select [(ngModel)]="chosenService" (change)="serviceSelect()" >
+  <select [(ngModel)]="chosenService" (change)="serviceSelect()">
     <option selected>Wybierz usluge!</option>
-    <option *ngFor="let service of services"  [ngValue]="service">{{service.name}}</option>
+    <option *ngFor="let service of services" [ngValue]="service">{{service.name}}</option>
   </select>
-
+  <ol *ngFor="let perm of permission">
+    {{perm.id}}
+  </ol>
   <div>
     <my-date-picker name="mydate"
                     [options]="myDatePickerOptions"
