@@ -6,9 +6,11 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class FryzjerappbackendApplication implements ApplicationRunner {
+public class FryzjerappbackendApplication extends SpringBootServletInitializer {
 
     private static final Logger LOG = LogManager.getLogger(FryzjerappbackendApplication.class);
 
@@ -17,7 +19,12 @@ public class FryzjerappbackendApplication implements ApplicationRunner {
     }
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
-
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(FryzjerappbackendApplication.class);
     }
+
+//    @Override
+//    public void run(ApplicationArguments args) throws Exception {
+//
+//    }
 }

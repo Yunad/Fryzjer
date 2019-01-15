@@ -27,17 +27,29 @@ public class AppConf extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
 
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/").permitAll();
+                .antMatchers("/resources/**", "/registration").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(userDetailsServiceImpl);
+        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder());
     }
 
     @Bean
