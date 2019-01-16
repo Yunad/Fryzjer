@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -18,16 +19,18 @@ export class RegisterComponent implements OnInit {
 
   public userInfo: string;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   public registerUser(): void {
     this.userService.createUser(this.prepareUserBody()).subscribe(
       (response) => {
-        this.userInfo = "Konto zostało utworzone!";
+        this.goTo("");
+        alert("Konto zostało utworzone. Możesz teraz się zalogować!");
       },
       (error) => {
         console.log(error);
+        this.userInfo = "Nie udało się założyć konta. Sprubój jeszcze raz!";
       }
     )
   }
@@ -46,9 +49,27 @@ export class RegisterComponent implements OnInit {
     return true;
   }
 
+  public clear(): void {
+    this.lastName = "";
+    this.password = "";
+    this.email = "";
+    this.passwordRepeat = "";
+    this.firstName = "";
+  }
+
+  public clearInfo(): void {
+    this.userInfo = "";
+  }
+
+  public goTo(path: string): void {
+    this.router.navigate([path])
+  }
+
   onSubmit(): void {
     if (this.validateUser()) {
       this.registerUser();
+      this.clear();
+
     } else {
 
     }

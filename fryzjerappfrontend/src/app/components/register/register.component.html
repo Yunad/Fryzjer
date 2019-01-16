@@ -11,32 +11,32 @@
           </div>
           <div class="text-body">
             <label for="jp1" class="head">Imię</label>
-            <input type="text" class="form-control" [(ngModel)]="firstName" id="jp1">
+            <input type="text" class="form-control" [(ngModel)]="firstName" (change)="clearInfo()" id="jp1">
             <label for="jp1" class="smallText">Polne wymagane</label>
             <br>
 
             <label for="jp2" class="head">Nazwisko</label>
-            <input type="text" class="form-control" [(ngModel)]="lastName" id="jp2">
+            <input type="text" class="form-control" [(ngModel)]="lastName" (change)="clearInfo()" id="jp2">
             <label for="jp2" class="smallText">Pole wymagane</label>
             <br>
 
             <label for="jp3" class="head">E-mail</label>
-            <input type="email" class="form-control" [(ngModel)]="email" id="jp3">
+            <input type="email" class="form-control" [(ngModel)]="email" (change)="clearInfo()" id="jp3">
             <label for="jp3" class="smallText">Przy użyciu tego adresu będziesz mógł się zalogować</label>
             <br>
 
             <label for="jp5" class="head">Hasło</label>
-            <input type="text" class="form-control" [(ngModel)]="password" id="jp5">
+            <input type="text" class="form-control" [(ngModel)]="password" (change)="clearInfo()" id="jp5">
             <label for="jp5" class="smallText">Co najmniej 8 znaków</label>
             <br>
 
             <label for="jp6" class="head">Powtórz hasło</label>
-            <input type="text" class="form-control" [(ngModel)]="passwordRepeat" id="jp6">
+            <input type="text" class="form-control" [(ngModel)]="passwordRepeat" (change)="clearInfo()" id="jp6">
             <label for="jp6" class="smallText">Pole wymagane</label>
             <br>
+            <p class="alarm" *ngIf="userInfo">{{userInfo}}</p>
             <input (click)="onSubmit()" type="submit" class="btn" value="Utwórz konto">
             <br>
-            <p *ngIf="userInfo">{{userInfo}}</p>
           </div>
 
         </div>
@@ -49,7 +49,6 @@
           <img class="graf" src="assets/img/img5.jpg" alt="Grafika">
         </div>
       </div>
-      <!--</body>-->
     </div>
   </header>
 </div>

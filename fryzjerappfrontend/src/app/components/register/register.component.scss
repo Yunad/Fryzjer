@@ -2,13 +2,18 @@ p {
   font-family: titilliumwebsemibold, sans-serif;
   font-size: 20px;
   font-style: normal;
-
-
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+}
+.alarm {
+  font-size: 15px;
+  font-style: italic;
+  color: crimson;
+  font-family: titilliumwebsemibold, sans-serif;
+  text-align: center;
 }
 .text{
   font-size: xx-small;

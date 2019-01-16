@@ -68,13 +68,6 @@ export class ReservationSidebarComponent implements OnInit {
     )
   }
 
-  private fetchPermissions(): void {
-    this.permissionsService.getPermissions().subscribe(
-      (resp: Permission[]) => {
-        this.permission = resp;
-      }
-    )
-  }
 
   public serviceSelect(): void {
     this.selectedService.emit(this.chosenService);
@@ -86,7 +79,6 @@ export class ReservationSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.fetchServices();
-    this.fetchPermissions();
     this.fetchPermissions();
     this.fetchEmployee();
     console.log(this.today);

@@ -3,16 +3,17 @@
     <b>Zaloguj się!!!</b>
   </p>
   <label for=""> E-mail</label>
-  <input [(ngModel)]="login" class="form-control">
+  <input [(ngModel)]="login" (change)="clearInfo()" class="form-control">
 
   <label for="">Hasło</label>
-  <input [(ngModel)]="password" type="text" class="form-control">
+  <input [(ngModel)]="password" (change)="clearInfo()" type="text" class="form-control">
   <br>
-  <button (click)="onLogin()" class="btn">Zaloguj</button>
-
-  <button (click)="goTo('register')" class="btn-sm">Załóż konto</button>
-  <br>
-  <p (click)="goTo('reminder')" class="resent"><u>Zapomniałem hasła</u></p>
-
+  <a>
+    <button (click)="onLogin()" (submit)="clear()"  class="btn">Zaloguj</button>
+  </a>
+  <a class="lo">
+    <button (click)="goTo('register')" class="btn">Załóż konto</button>
+  </a>
   <p class="validation">{{validationMessage}}</p>
+  <div class="hr">&nbsp;</div>
 </div>
