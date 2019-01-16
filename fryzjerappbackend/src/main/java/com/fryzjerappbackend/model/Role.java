@@ -9,7 +9,6 @@ import java.util.List;
 @Table(name = "Roles")
 public class Role implements Serializable {
 
-
     @Id
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;

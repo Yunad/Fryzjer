@@ -17,7 +17,6 @@ public class UserServiceRelationService {
         this.userAppoinmentServiceRepository = userAppoinmentServiceRepository;
     }
 
-
     public List<UserServiceRelation> getAllUserServiceRelations() {
         return userAppoinmentServiceRepository.findAll();
     }

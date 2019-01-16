@@ -22,8 +22,8 @@ public class AppointmentService {
         return appointmentRepository.findAll();
     }
 
-    public void createAppointment(Appointment appointment) {
-        appointmentRepository.save(appointment);
+    public Appointment createAppointment(Appointment appointment) {
+        return appointmentRepository.save(appointment);
     }
 
     public Optional<Appointment> getAppointmentById(Long appointmentId) {

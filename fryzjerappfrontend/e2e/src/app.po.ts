@@ -1,6 +1,5 @@
 import {by, element} from 'protractor';
 
-
 function buttonPath(numberButton: number) {
   return 'body > app-root > app-homepage > div > app-header > header > div > div.col-lg-5 > app-menu > ' +
     'ul > li:nth-child(' + numberButton + ') > a > b';
@@ -11,7 +10,7 @@ function loginViewPath(loginComponents: string) {
     'div > ' + loginComponents;
 }
 
-function registerViewPath(registerComponents: string) {
+export function registerViewPath(registerComponents: string) {
   return 'body > app-root > app-register > div > header > div > div > div.col-sm-6.' + registerComponents;
 }
 
@@ -19,7 +18,7 @@ function reservationViewPath(reservationComponents: string) {
   return 'body > app-root > app-reservation > div > div > div.col-lg-4 > app-reservation-sidebar > div > ' + reservationComponents;
 }
 
-export class MainPageView {
+export class MainPageComponents {
 
   getLogoImg() {
     return element(by.css('body > app-root > app-homepage > div > app-header > header > div > div.col-lg-3 > img'));
@@ -57,48 +56,7 @@ export class MainPageView {
 
 }
 
-export class RegisterView {
-
-  getRegisterName() {
-    return element(by.css(registerViewPath('col-md-7.col-lg-8 > h1')));
-  }
-
-  getRegisterImg() {
-    return element(by.css(registerViewPath('col-md-7.col-lg-8 > img')));
-  }
-
-  getName() {
-
-    return element(by.css('#jp1'));
-  }
-
-  getSurname() {
-    return element(by.css('#jp2'));
-  }
-
-  getMail() {
-    return element(by.css('#jp3'));
-  }
-
-  getPassword() {
-    return element(by.css('#jp5'));
-  }
-
-  getRepeatPasswourd() {
-    return element(by.css('#jp6'));
-  }
-
-  getRegisterButton() {
-    return element(by.css(registerViewPath('col-md-5.col-lg-4 > div.text-body > input.btn')));
-  }
-
-  getValidationText() {
-    return element(by.css(registerViewPath('col-md-5.col-lg-4 > div.text-body > p')));
-  }
-
-}
-
-export class LoginView {
+export class LoginComponents {
 
   getLoginLabel() {
     return element(by.css(loginViewPath('p.Butlog')));
@@ -117,7 +75,7 @@ export class LoginView {
   }
 }
 
-export class ReservationView {
+export class ReservationComponents {
 
   getCalendar() {
     return element(by.css(reservationViewPath('div > my-date-picker > div > div')));
@@ -129,6 +87,6 @@ export class ReservationView {
 
 }
 
-export class PriceListView {
+export class PriceListComponents {
 
 }

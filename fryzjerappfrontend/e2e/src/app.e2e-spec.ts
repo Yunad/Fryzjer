@@ -1,6 +1,6 @@
-import {LoginView, MainPageView, PriceListView, RegisterView, ReservationView} from './app.po';
+import {LoginComponents, MainPageComponents, PriceListComponents, ReservationComponents} from './app.po';
+import {RegisterComponents} from './RegisterModuleTest.po';
 import {browser} from 'protractor';
-
 
 describe('--Testy obecności komponentów, poprawność ścieżek na stronie--', function () {
 
@@ -9,11 +9,11 @@ describe('--Testy obecności komponentów, poprawność ścieżek na stronie--',
 
   describe('Strona główna', function () {
 
-    let page: MainPageView;
+    let page: MainPageComponents;
 
     beforeEach(function () {
       browser.get('/');
-      page = new MainPageView();
+      page = new MainPageComponents();
     });
 
     it('Wyświetla logo strony', function () {
@@ -72,11 +72,11 @@ describe('--Testy obecności komponentów, poprawność ścieżek na stronie--',
 
   describe('Widok logowania', function () {
 
-    let login: LoginView;
+    let login: LoginComponents;
 
     beforeEach(() => {
       browser.get('/');
-      login = new LoginView();
+      login = new LoginComponents();
     });
 
     it('Wyświetla napis Zaloguj się', function () {
@@ -99,11 +99,11 @@ describe('--Testy obecności komponentów, poprawność ścieżek na stronie--',
 
   describe('Widok rejestracji', function () {
 
-    let register: RegisterView;
+    let register: RegisterComponents;
 
     beforeEach(() => {
       browser.get('/register');
-      register = new RegisterView();
+      register = new RegisterComponents();
     });
 
     it('Wyświetla napis Zarejestruj się', function () {
@@ -117,11 +117,11 @@ describe('--Testy obecności komponentów, poprawność ścieżek na stronie--',
   });
 
   describe('Widok rezerwacji', function () {
-    let reservation: ReservationView;
+    let reservation: ReservationComponents;
 
     beforeEach(() => {
       browser.get('/reservation');
-      reservation = new ReservationView();
+      reservation = new ReservationComponents();
     });
 
     it('Wyświetla kalendarz', function () {
@@ -135,105 +135,12 @@ describe('--Testy obecności komponentów, poprawność ścieżek na stronie--',
   });
 
   describe('Widok cennika', function () {
-    let price: PriceListView;
+    let price: PriceListComponents;
 
     beforeEach(() => {
       browser.get('/priceList');
-      price = new PriceListView();
+      price = new PriceListComponents();
     });
 
   });
-});
-
-
-describe('--Przypadki testowe modułu rejestracji--', function () {
-
-  let registerModule: RegisterView;
-
-  beforeEach(() => {
-    browser.get('/register');
-    registerModule = new RegisterView();
-  });
-
-  describe('Kiedy formularz jest pusty', function () {
-    it('nie wyświetla się potwierdzenie utworzenia konta', function () {
-      registerModule.getRegisterButton().click();
-      expect(registerModule.getValidationText().isPresent()).toBe(false);
-    })
-  });
-
-  describe('Kiedy formularz ma niepoprawny format maila (cos@cos.cos)', function () {
-    it('nie wyświetla się potwierdzenie utworzenia konta', function () {
-      registerModule.getName().sendKeys('Adam');
-      registerModule.getSurname().sendKeys('Waski');
-      registerModule.getMail().sendKeys('lolek.pl');
-      registerModule.getPassword().sendKeys('Rodorodo!');
-      registerModule.getRepeatPasswourd().sendKeys('Rodorodo!');
-      registerModule.getRegisterButton().click();
-      expect(registerModule.getValidationText().isPresent()).toBe(false);
-    })
-  });
-
-  describe('Kiedy w formularzu brakuje jednego wypełnionego pola', function () {
-    it('nie wyświetla się potwierdzenie utworzenia konta', function () {
-      registerModule.getName().sendKeys('Adam');
-      registerModule.getSurname().sendKeys('Waski');
-      registerModule.getPassword().sendKeys('Rodorodo!');
-      registerModule.getRepeatPasswourd().sendKeys('Rodorodo!');
-      registerModule.getRegisterButton().click();
-      expect(registerModule.getValidationText().isPresent()).toBe(false);
-    })
-  });
-
-  describe('Kiedy formularz ma krótkie hasło', function () {
-    it('nie wyświetla się potwierdzenie utworzenia konta', function () {
-      registerModule.getName().sendKeys('Adam');
-      registerModule.getSurname().sendKeys('Waski');
-      registerModule.getMail().sendKeys('lol@ek.pl');
-      registerModule.getPassword().sendKeys('Rodo!');
-      registerModule.getRepeatPasswourd().sendKeys('Rodo!');
-      registerModule.getRegisterButton().click();
-      expect(registerModule.getValidationText().isPresent()).toBe(false);
-    })
-  });
-
-  describe('Kiedy w formularzu pozycja hasło i powtórz hasło są inne', function () {
-    it('nie wyświetla się potwierdzenie utworzenia konta', function () {
-      registerModule.getName().sendKeys('Adam');
-      registerModule.getSurname().sendKeys('Waski');
-      registerModule.getMail().sendKeys('lol@ek.pl');
-      registerModule.getPassword().sendKeys('Rodorodo!');
-      registerModule.getRepeatPasswourd().sendKeys('Brakrodo!');
-      registerModule.getRegisterButton().click();
-      expect(registerModule.getValidationText().isPresent()).toBe(false);
-    })
-  });
-
-  describe('Kiedy formularz ma wszystkie pola poprawnie wypełnione, klikamy utwórz konto a następnie usuwamy ' +
-    'jedno pole i znów klikamy na przycisk', function () {
-    it('znika potwierdzenie utworzenia konta', function () {
-      registerModule.getName().sendKeys('Adam');
-      registerModule.getSurname().sendKeys('Waski');
-      registerModule.getMail().sendKeys('lol@ek.pl');
-      registerModule.getPassword().sendKeys('Rodorodo!');
-      registerModule.getRepeatPasswourd().sendKeys('Rodorodo!');
-      registerModule.getRegisterButton().click();
-      registerModule.getName().clear();
-      expect(registerModule.getValidationText().isPresent()).toBe(false);
-    })
-  });
-
-  describe('Kiedy formularz ma wszystkie pola poprawnie wypełnione', function () {
-    it('wyświetla się potwierdzenie utworzenia konta', function () {
-      //browser.sleep(5000);
-      registerModule.getName().sendKeys('Adam');
-      registerModule.getSurname().sendKeys('Waski');
-      registerModule.getMail().sendKeys('lol@ek.pl');
-      registerModule.getPassword().sendKeys('Rodorodo!');
-      registerModule.getRepeatPasswourd().sendKeys('Rodorodo!');
-      registerModule.getRegisterButton().click();
-      expect(registerModule.getValidationText().isPresent()).toBe(true);
-    })
-  });
-
 });

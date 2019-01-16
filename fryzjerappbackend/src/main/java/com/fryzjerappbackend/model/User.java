@@ -118,6 +118,11 @@ public class User implements Serializable {
         return id;
     }
 
+    //potrzebne do testów
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "User{" +
