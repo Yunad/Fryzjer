@@ -6,7 +6,7 @@ import { HttpClient} from "@angular/common/http";
 })
 export class PermissionService {
 
-  public backendUrl: string ="http://localhost:8080/service/get";
+  public backendUrl: string ="http://localhost:8080/relation/get";
   constructor(private http: HttpClient) { }
 
   public getPermissions() {

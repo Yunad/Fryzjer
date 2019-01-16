@@ -4,9 +4,11 @@
     <option *ngFor="let service of services" [ngValue]="service">{{service.name}}</option>
   </select>
   <ol *ngFor="let perm of permission">
-    {{perm.id}}
+    <ol *ngFor="let emp of employee">
+      <ol *ngIf="perm.userId==emp.id && perm.serviceId==chosenService.id">{{emp.name}}</ol>
+    </ol>
   </ol>
-  <div>
+  <div class="test">
     <my-date-picker name="mydate"
                     [options]="myDatePickerOptions"
                     (dateChanged)="onDateChanged($event)"

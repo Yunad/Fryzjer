@@ -6,12 +6,14 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ListemployeeService {
 
-  public backendUrl: string = "http://localhost:8080/user/get";
+  private rola: number =2;
+
+  public backendUrl: string = "http://localhost:8080/user/get/role/";
 
   constructor(private http: HttpClient) {
   }
 
   public getEmploye() {
-    return this.http.get(this.backendUrl);
+    return this.http.get(this.backendUrl+this.rola);
   }
 }
