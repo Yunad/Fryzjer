@@ -53,6 +53,13 @@ export class ReservationSidebarComponent implements OnInit {
     )
   }
 
+  private fetchPermissions(): void {
+    this.permissionsService.getPermissions().subscribe(
+      (resp: Permission[]) => {
+        this.permission = resp;
+      }
+    )
+  }
   private fetchEmployee(): void {
     this.listEmployeService.getEmploye().subscribe(
       (resp: Employee[]) => {
@@ -79,6 +86,7 @@ export class ReservationSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.fetchServices();
+    this.fetchPermissions();
     this.fetchPermissions();
     this.fetchEmployee();
     console.log(this.today);
