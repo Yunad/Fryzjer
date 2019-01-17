@@ -1,12 +1,10 @@
 package com.fryzjerappbackend.config;
 
-import com.auth.service.UserDetailsServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -34,19 +32,26 @@ public class AppConf extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests()
+
+        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/service/get", "/user/get/role/2", "/user/get/email/*")
+                .permitAll()
+                .and()
+                .logout();
+
+        http.authorizeRequests().antMatchers("/user/get/all").hasRole("USER")
                 .anyRequest().authenticated()
-                .and().httpBasic()
-                .authenticationEntryPoint(authEntryPoint);
+                .and().httpBasic().authenticationEntryPoint(authEntryPoint);
+
+        http.csrf().disable().authorizeRequests();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("john123").password(bCryptPasswordEncoder().encode("password")).roles("USER");
     }
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

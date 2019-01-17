@@ -13,7 +13,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/role")
-public class RoleController {
+public class RoleController{
     private static final Logger LOG = LogManager.getLogger(RoleController.class);
 
     @Autowired
