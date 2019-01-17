@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   public onLogin(): void {
     this.validationMessage = "";
-    if (this.login.length > 1 && this.password.length > 1) {
+    if (this.login.length > 1 && this.password.length > 7) {
       //wysylanie do serwera
     } else {
       this.validationMessage = "Wypełnij pole LOGIN oraz HASŁO";
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }

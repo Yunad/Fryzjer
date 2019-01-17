@@ -26,12 +26,12 @@
             <br>
 
             <label for="jp5" class="head">Hasło</label>
-            <input type="text" class="form-control" [(ngModel)]="password" (change)="clearInfo()" id="jp5">
+            <input type="password" class="form-control" [(ngModel)]="password" (change)="clearInfo()" id="jp5">
             <label for="jp5" class="smallText">Co najmniej 8 znaków</label>
             <br>
 
             <label for="jp6" class="head">Powtórz hasło</label>
-            <input type="text" class="form-control" [(ngModel)]="passwordRepeat" (change)="clearInfo()" id="jp6">
+            <input type="password" class="form-control" [(ngModel)]="passwordRepeat" (change)="clearInfo()" id="jp6">
             <label for="jp6" class="smallText">Pole wymagane</label>
             <br>
             <p class="alarm" *ngIf="userInfo">{{userInfo}}</p>
