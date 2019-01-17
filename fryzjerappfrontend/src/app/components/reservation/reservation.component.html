@@ -1,16 +1,69 @@
-<div class = "container mt-4">
+<div class="container mt-4">
   <app-header></app-header>
+  <header>
+    <div class="row">
+      <div class="col-lg-4">
+        <app-reservation-sidebar [test]="'coa cos'"
+                                 (selectedDay)="onDaySelect($event)"
+                                 (selectedService)="onServiceSelect($event)">
 
-  <div class="row">
-    <div class="col-lg-4">
-      <app-reservation-sidebar [test]="'coa cos'"
-                               (selectedDay)="onDaySelect($event)"
-                               (selectedService)="onServiceSelect($event)">
-
-      </app-reservation-sidebar>
+        </app-reservation-sidebar>
+      </div>
+      <div class="col-lg-8">
+        <br>
+        <br>
+        <table>
+          <tr id="1">
+            <td>8.00-8.30</td>
+          </tr>
+          <tr id="2">
+            <td>8.30-9.00</td>
+          </tr>
+          <tr id="3">
+            <td>9.00-09.30</td>
+          </tr>
+          <tr id="4">
+            <td>09.30-10.00</td>
+          </tr>
+          <tr id="5">
+            <td>10.00-10.30</td>
+          </tr>
+          <tr id="6">
+            <td>10.30-11.00</td>
+          </tr>
+          <tr id="7">
+            <td>11.00-11.30</td>
+          </tr>
+          <tr>
+            <td>11.30-12.00</td>
+          </tr>
+          <tr>
+            <td>12.00-12.30</td>
+          </tr>
+          <tr>
+            <td>12.30-13.00</td>
+          </tr>
+          <tr>
+            <td>13.00-13.30</td>
+          </tr>
+          <tr>
+            <td>13.30-14.00</td>
+          </tr>
+          <tr>
+            <td>14.00-14.30</td>
+          </tr>
+          <tr>
+            <td>14.30-15.00</td>
+          </tr>
+          <tr>
+            <td>15.00-15.30</td>
+          </tr>
+          <tr>
+            <td>15.30-16.00</td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div class="col-lg-8"></div>
-  </div>
-
+  </header>
   <app-footer></app-footer>
 </div>

@@ -1,9 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Service} from '../../price-list/services';
+import {Permission} from "./permissions";
 import {UtilityService} from '../../../services/utility.service';
+import {PermissionService} from "../../../services/permission.service";
 import {IMyDpOptions, IMyDate, IMyDateModel} from 'mydatepicker';
 import * as moment from 'moment';
 import {Moment} from 'moment';
+import {ListemployeeService} from "../../../services/listemployee.service";
+import {Employee} from "../../employee/employe";
 
 @Component({
   selector: 'app-reservation-sidebar',
@@ -35,8 +39,10 @@ export class ReservationSidebarComponent implements OnInit {
 
   public chosenService: Service;
   public services: Service[];
+  public permission: Permission[];
+  public employee: Employee[];
 
-  constructor(private utilityService: UtilityService) {
+  constructor(private utilityService: UtilityService, private permissionsService: PermissionService, private listEmployeService: ListemployeeService) {
   }
 
   private fetchServices(): void {
@@ -46,6 +52,22 @@ export class ReservationSidebarComponent implements OnInit {
       }
     )
   }
+
+  private fetchPermissions(): void {
+    this.permissionsService.getPermissions().subscribe(
+      (resp: Permission[]) => {
+        this.permission = resp;
+      }
+    )
+  }
+  private fetchEmployee(): void {
+    this.listEmployeService.getEmploye().subscribe(
+      (resp: Employee[]) => {
+        this.employee = resp;
+      }
+    )
+  }
+
 
   public serviceSelect(): void {
     this.selectedService.emit(this.chosenService);
@@ -57,6 +79,8 @@ export class ReservationSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.fetchServices();
+    this.fetchPermissions();
+    this.fetchEmployee();
     console.log(this.today);
     console.log(this.disableUntilDate);
   }

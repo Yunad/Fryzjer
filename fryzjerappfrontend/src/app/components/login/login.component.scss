@@ -1,6 +1,8 @@
 .validation {
   color: crimson;
+  margin-bottom: 4px;
 }
+
 .Butlog {
 
 
@@ -16,6 +18,7 @@
   cursor: context-menu;
   font-size: large;
 }
+
 label {
   font-family: "Arial Black";
   display: inline;
@@ -24,29 +27,24 @@ label {
 
 .form-control {
   height: calc(1.75rem + 2px);
-  width : 98%;
+  width: 98%;
 }
+
 input {
   margin-left: 2px;
 }
+
 .form-group {
-margin-bottom: 0;
+  margin-bottom: 0;
 }
-.btn-sm {
-  margin-left: 43%;
-  cursor: pointer;
-  color: black;
-  background-color: chocolate;
-
-  font-weight: bold;
-  font-family: Georgia;
-  padding-bottom: 3px;
-  padding-top: 3px;
 
 
+.lo {
+  margin-left: 36%;
 }
-.btn{
-  margin-left:1%;
+
+.btn {
+  margin-left: 1%;
 
   margin-bottom: 2%;
   cursor: pointer;
@@ -56,11 +54,12 @@ margin-bottom: 0;
   font-weight: bold;
   font-family: Georgia;
 }
+
 .resent {
   text-align: left;
   text-decoration-line: underline;
   font-size: smaller;
-  margin-left:1%;
+  margin-left: 1%;
   cursor: context-menu;
   margin-bottom: 0;
 
@@ -71,3 +70,11 @@ margin-bottom: 0;
 
 }
 
+.hr {
+  border-top: solid 1px black;
+  font-size: 0;
+  line-height: 0;
+  margin-left: 1%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
