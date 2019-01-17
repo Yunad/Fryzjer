@@ -34,8 +34,9 @@
             <input type="password" class="form-control" [(ngModel)]="passwordRepeat" (change)="clearInfo()" id="jp6">
             <label for="jp6" class="smallText">Pole wymagane</label>
             <br>
-            <p class="alarm" *ngIf="userInfo">{{userInfo}}</p>
+
             <input (click)="onSubmit()" type="submit" class="btn" value="Utwórz konto">
+            <p class="alarm" *ngIf="userInfo">{{userInfo}}</p>
             <br>
           </div>
 

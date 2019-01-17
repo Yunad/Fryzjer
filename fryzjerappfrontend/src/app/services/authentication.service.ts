@@ -5,11 +5,9 @@ import { HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  public backendUrl: string = "http://localhost:8080/user/get/email/";
+  public backendUrl: string = "http://localhost:8080/user/get";
 
   constructor(private http: HttpClient) { }
 
-  getUserDetails(): void {
 
-  }
 }

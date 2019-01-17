@@ -11,11 +11,11 @@ import {Router} from "@angular/router";
 export class RegisterComponent implements OnInit {
 
   private roleId: number = 1;
-  public password: string;
-  public passwordRepeat: string;
-  public firstName: string;
-  public lastName: string;
-  public email: string;
+  public password: string = "";
+  public passwordRepeat: string = "";
+  public firstName: string = "";
+  public lastName: string = "";
+  public email: string = "";
 
   public userInfo: string;
 
@@ -25,7 +25,8 @@ export class RegisterComponent implements OnInit {
   public registerUser(): void {
     this.userService.createUser(this.prepareUserBody()).subscribe(
       (response) => {
-        this.goTo("");
+        this.goTo('');
+        console.log(response);
         alert("Konto zostało utworzone. Możesz teraz się zalogować!");
       },
       (error) => {
@@ -46,7 +47,11 @@ export class RegisterComponent implements OnInit {
   }
 
   private validateUser(): boolean {
-    return true;
+    if (this.password == this.passwordRepeat && this.password.length > 7 && this.email.includes("@")
+      && this.lastName.length > 1 && this.firstName.length > 1 && this.email.includes("."))
+      return true;
+    else
+      return false;
   }
 
   public clear(): void {
@@ -71,7 +76,7 @@ export class RegisterComponent implements OnInit {
       this.clear();
 
     } else {
-
+      this.userInfo = "Niepoprawne dane. Spróbuj jeszcze raz!";
     }
   }
 
