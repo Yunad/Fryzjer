@@ -1,17 +1,14 @@
 package com.fryzjerappbackend.controler;
 
 
-import com.auth.service.SecurityService;
 import com.auth.validator.UserValidator;
-import com.fryzjerappbackend.exception.EmailExistsException;
 import com.fryzjerappbackend.model.User;
 import com.fryzjerappbackend.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,9 +22,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private SecurityService securityService;
 
     @Autowired
     private UserValidator userValidator;
@@ -50,49 +44,21 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/create")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody User user) throws EmailExistsException {
-        LOG.info("User {} has been created.", user);
-        userService.registerNewUserAccount(user);
+
+    @GetMapping(path = "/user")
+    public ResponseEntity<List<User>> listUser() {
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        model.addAttribute("userForm", new User());
+    @GetMapping(path = "/user/{id}")
+    public ResponseEntity<User> listUser(@PathVariable(value = "id") String id) {
+        return new ResponseEntity<>(userService.getAllUsers().stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null), HttpStatus.OK);
 
-        return "registration";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@RequestBody User userForm, BindingResult bindingResult, Model model) {
-        userValidator.validate(userForm, bindingResult);
-
-        if (bindingResult.hasErrors()) {
-            return "registration";
-        }
-
-        userService.createUser(userForm);
-
-        securityService.autologin(userForm.getName(), userForm.getPassword());
-
-        return "redirect:/welcome";
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
-
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-
-        return "login";
-    }
-
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "welcome";
+    @PostMapping(path = "/user")
+    public ResponseEntity<String> listUser(@RequestBody User user) {
+        return new ResponseEntity<>("18", HttpStatus.OK);
     }
 
     @GetMapping("/get/role/{roleId}")
