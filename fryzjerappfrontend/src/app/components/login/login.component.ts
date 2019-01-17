@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.http.post('user/login', this.model, {
+    this.http.post('/user/login', this.model, {
       params: {
         username: this.model.login,
         password: this.model.password
