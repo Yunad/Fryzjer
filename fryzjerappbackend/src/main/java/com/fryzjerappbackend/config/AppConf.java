@@ -15,8 +15,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.Collections;
-
 @Configuration
 @EnableWebSecurity
 public class AppConf extends WebSecurityConfigurerAdapter {
@@ -31,11 +29,17 @@ public class AppConf extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        return source;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/service/get", "/user/get/role/2", "/user/get/email/*")
+        http.cors();
+        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/service/get", "/user/get/role/*", "/user/get/email/*")
                 .permitAll()
                 .and()
                 .csrf().disable().authorizeRequests()
