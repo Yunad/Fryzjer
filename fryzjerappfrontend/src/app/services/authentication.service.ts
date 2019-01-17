@@ -1,13 +1,43 @@
-import { Injectable } from '@angular/core';
-import { HttpClient} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  public backendUrl: string = "http://localhost:8080/user/get";
 
-  constructor(private http: HttpClient) { }
+  private token = 'dupa'; //zmienna zawierająca token
 
+
+  constructor(private http: HttpClient) {
+  }
+
+  getTokenName() {
+    return this.token;  //metoda zwracająca prywatny token
+  }
+
+  getToken() { //metoda zwracająca wartość tokena
+    let cookies: any = document.cookie ? document.cookie.split('; ') : [];
+    cookies = cookies.map((raw) => {
+      const cookie = raw.split('=');
+      if (!cookie || !cookie.length) return {};
+      return {
+        key: cookie[0],
+        val: cookie[1]
+      };
+    });
+    const tOKEN = cookies.find((cookie: any) => cookie.key === this.token) as any;
+    return tOKEN ? tOKEN.val : null;
+  }
+
+  isAdm() { //inormacja zwrotna czy login istnieje
+    return !!this.getToken();
+  }
+
+  loginSuccess(tokenn) { //metoda ustawiająca token z idSesji zwróconym z backendu
+    const date = new Date();
+    date.setTime(date.getTime() + 6000);
+    document.cookie = `${this.token}=${tokenn};expires=${date.toUTCString()};path=/`;
+  }
 
 }
