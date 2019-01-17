@@ -3,8 +3,10 @@ package com.fryzjerappbackend.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,19 +23,21 @@ public class User implements Serializable {
     private Long id; // bez settera (konstruktora), tym zarzadza JPA (wlasnie dzieki anotacja)
     @NotNull
     @NotEmpty(message = "Name cannot be empty")
-    @Column(name = "name")
+    @Column(name = "name", length = 25)
     private String name;
     @NotNull
     @NotEmpty(message = "Lastname cannot be empty")
-    @Column(name = "lastName")
+    @Column(name = "lastName", length = 25)
     private String lastName;
     @NotNull
     @NotEmpty(message = "Password cannot be empty")
     @Column(name = "password")
+    @Size(min = 8, max = 64)
     private String password;
     @NotNull
     @NotEmpty(message = "Email cannot be empty")
     @Column(name = "email")
+    @Email
     private String email;
     @Column(name = "roleId")
     @NotNull

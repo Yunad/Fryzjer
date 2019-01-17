@@ -1,19 +1,21 @@
 package com.fryzjerappbackend.controler;
 
 
-import com.auth.service.SecurityService;
-import com.auth.validator.UserValidator;
+//import com.auth.validator.UserValidator;
+
 import com.fryzjerappbackend.exception.EmailExistsException;
+import com.fryzjerappbackend.exception.UserNotFoundException;
 import com.fryzjerappbackend.model.User;
 import com.fryzjerappbackend.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,77 +28,76 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private SecurityService securityService;
+//    @Autowired
+//    private UserValidator userValidator;
 
     @Autowired
-    private UserValidator userValidator;
+    AuthenticationManagerBuilder authenticationManagerBuilder;
 
     @GetMapping("/get/id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Optional<User> getUserById(@PathVariable("id") Long id) {
+        final Optional<User> userById = userService.getUserById(id);
+        if (!userById.isPresent()) {
+            throw new UserNotFoundException("id- " + id);
+        }
         return userService.getUserById(id);
     }
 
     @GetMapping("/get/email/{email}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<User> findByEmail(@PathVariable("email") String email) {
-        return userService.findUserByEmail(email);
+    public Optional<User> getUserByEmail(@PathVariable("email") String email) {
+        final Optional<User> userByEmail = userService.getUserByEmail(email);
+        if (!userByEmail.isPresent()) {
+            throw new UserNotFoundException("Email " + email);
+        }
+        return userService.getUserByEmail(email);
     }
 
-    @GetMapping("/get")
+    @GetMapping("/get/all")
     @ResponseStatus(HttpStatus.OK)
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+    //TODO other way to handle mapings
+//    @GetMapping(path = "/user/get/all")
+//    public ResponseEntity<List<User>> listUser() {
+//        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+//    }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody User user) throws EmailExistsException {
-        LOG.info("User {} has been created.", user);
-        userService.registerNewUserAccount(user);
-    }
-
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        model.addAttribute("userForm", new User());
-
-        return "registration";
-    }
-
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@RequestBody User userForm, BindingResult bindingResult, Model model) {
-        userValidator.validate(userForm, bindingResult);
-
-        if (bindingResult.hasErrors()) {
-            return "registration";
+    public void createUser(@Valid @RequestBody User user) {
+        try {
+            userService.registerNewUserAccount(user);
+        } catch (EmailExistsException e) {
+            LOG.warn(e);
         }
-
-        userService.createUser(userForm);
-
-        securityService.autologin(userForm.getName(), userForm.getPassword());
-
-        return "redirect:/welcome";
+        LOG.info("User {} has been created.", user);
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+    @GetMapping(path = "/user/{id}")
+    public ResponseEntity<User> listUser(@PathVariable(value = "id") String id) {
+        return new ResponseEntity<>(userService.getAllUsers().stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null), HttpStatus.OK);
 
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-
-        return "login";
     }
 
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "welcome";
+    @PostMapping(path = "/user")
+    public ResponseEntity<String> listUser(@RequestBody User user) {
+        return new ResponseEntity<>("18", HttpStatus.OK);
     }
 
     @GetMapping("/get/role/{roleId}")
     public List<User> findByRoleId(@PathVariable("roleId") Long id) {
         return userService.getUserByRoleId(id);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginEndpoint(String email, String password) {
+        final Optional<User> userByEmail = userService.getUserByEmail(email);
+        if (userByEmail.isPresent()) {
+        }
+        return new ResponseEntity<>("Logged in", HttpStatus.OK);
+    }
+
 }

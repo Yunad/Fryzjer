@@ -8,9 +8,6 @@ import org.springframework.validation.Validator;
 
 @Component
 public class UserValidator implements Validator {
-//
-//    @Autowired
-//    private UserService userService;
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -21,13 +18,18 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         User user = (User) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"name","NotEmpty");
-        if(user.getPassword().length()<8 || user.getPassword().length()>32){
-            errors.rejectValue("password","Size.userForm.password");
-        }
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "Name cannot be empty");
 
-        if(!user.getPassword().equals(user.getPassword())){
-            errors.rejectValue("passwordConfirm","Diff.userForm.passwordConfirm");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "Last name cannot be empty");
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Email cannot be empty");
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Password cannot be empty");
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "roleId", "role id cannot be empty");
+
+        if (user.getPassword().length() < 8 || user.getPassword().length() > 64) {
+            errors.rejectValue("password", "Size.userForm.password");
         }
     }
 }
