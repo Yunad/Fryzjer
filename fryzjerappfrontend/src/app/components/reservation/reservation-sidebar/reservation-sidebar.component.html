@@ -1,10 +1,14 @@
 <div>
-  <select [(ngModel)]="chosenService" (change)="serviceSelect()" >
+  <select [(ngModel)]="chosenService" (change)="serviceSelect()">
     <option selected>Wybierz usluge!</option>
-    <option *ngFor="let service of services"  [ngValue]="service">{{service.name}}</option>
+    <option *ngFor="let service of services" [ngValue]="service">{{service.name}}</option>
   </select>
-
-  <div>
+  <ol *ngFor="let perm of permission">
+    <ol *ngFor="let emp of employee">
+      <ol *ngIf="perm.userId==emp.id && perm.serviceId==chosenService.id">{{emp.name}}</ol>
+    </ol>
+  </ol>
+  <div class="test">
     <my-date-picker name="mydate"
                     [options]="myDatePickerOptions"
                     (dateChanged)="onDateChanged($event)"
