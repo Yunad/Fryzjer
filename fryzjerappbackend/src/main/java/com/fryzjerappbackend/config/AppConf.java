@@ -38,6 +38,10 @@ public class AppConf extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/", "/login", "/logout", "/service/get", "/user/get/role/2", "/user/get/email/*")
                 .permitAll()
                 .and()
+                .csrf().disable().authorizeRequests()
+                .anyRequest().authenticated()
+                .and().httpBasic()
+                .and()
                 .logout();
 
         http.authorizeRequests().antMatchers("/user/get/all").hasRole("USER")
@@ -50,17 +54,5 @@ public class AppConf extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("john123").password(bCryptPasswordEncoder().encode("password")).roles("USER");
-    }
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("*"));
-        configuration.setAllowedMethods(Collections.singletonList("*"));
-        configuration.setAllowedHeaders(Collections.singletonList("*"));
-        configuration.setAllowCredentials(true);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
     }
 }
