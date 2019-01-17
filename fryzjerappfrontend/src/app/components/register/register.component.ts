@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
 
   private validateUser(): boolean {
     if (this.password == this.passwordRepeat && this.password.length > 7 && this.email.includes("@")
-      && this.lastName.length > 1 && this.firstName.length > 1 && this.email.includes("."))
+      && this.lastName.length > 1 && this.firstName.length > 1 && this.email.includes(".")) //TODO: This must be changed. Adam
       return true;
     else
       return false;
