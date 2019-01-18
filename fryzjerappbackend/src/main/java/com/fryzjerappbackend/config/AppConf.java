@@ -31,11 +31,17 @@ public class AppConf extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        return source;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/service/get", "/user/get/role/2", "/user/get/email/*")
+        http.cors();
+        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/service/get", "/user/create", "/user/get/role/2", "/user/get/email/*")
                 .permitAll()
                 .and()
                 .csrf().disable().authorizeRequests()

@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import { HttpClient} from "@angular/common/http";
 
 
 @Injectable({
@@ -7,9 +8,9 @@ import {Injectable} from '@angular/core';
 export class AuthenticationService {
 
   private token = 'dupa'; //zmienna zawierająca token
+  public backendUrl: string = "http://localhost:8080/user";
 
-
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   getTokenName() {
@@ -39,5 +40,7 @@ export class AuthenticationService {
     date.setTime(date.getTime() + 6000);
     document.cookie = `${this.token}=${tokenn};expires=${date.toUTCString()};path=/`;
   }
-
+  public loginUser(userBody) {
+    return this.http.post(this.backendUrl, userBody);
+  }
 }
