@@ -12,7 +12,7 @@ import {Employee} from "../../employee/employe";
 @Component({
   selector: 'app-reservation-sidebar',
   templateUrl: './reservation-sidebar.component.html',
-  styleUrls: ['./reservation-sidebar.component.css']
+  styleUrls: ['./reservation-sidebar.component.scss']
 })
 export class ReservationSidebarComponent implements OnInit {
 
@@ -60,6 +60,7 @@ export class ReservationSidebarComponent implements OnInit {
       }
     )
   }
+
   private fetchEmployee(): void {
     this.listEmployeService.getEmploye().subscribe(
       (resp: Employee[]) => {
@@ -68,6 +69,10 @@ export class ReservationSidebarComponent implements OnInit {
     )
   }
 
+  public showWorker() {
+    this.fetchEmployee()
+
+  }
 
   public serviceSelect(): void {
     this.selectedService.emit(this.chosenService);

@@ -1,0 +1,39 @@
+.test {
+  padding-top: 20%;
+  margin-left: 60px;
+}
+
+select {
+  margin-left: 60px;
+  width: 252px;
+  margin-top: 15px;
+}
+
+ol {
+  margin-left: 60px;
+  width: 252px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+}
+
+.btn {
+  margin-top: 2%;
+  margin-left: 0px;
+  cursor: pointer;
+  color: black;
+  background-color: chocolate;
+  font-weight: bold;
+  font-family: Georgia;
+
+
+&:hover {
+   background-color: darkorange;
+ }
+
+}
+
+.ja {
+  margin-left: 0;
+}
+

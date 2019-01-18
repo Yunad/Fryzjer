@@ -4,6 +4,10 @@ header {
 
 .box {
   display: block;
+  background: white;
+  padding: 1.25rem;
+  width: 100%;
+  margin-bottom: 50px;
 }
 .margin {
   display: block;
@@ -13,6 +17,7 @@ header {
   width: 33.3333%;
   margin-right: 0;
   float: left;
+  padding-top: 20px;
 }
 h2 {
   text-align: center;

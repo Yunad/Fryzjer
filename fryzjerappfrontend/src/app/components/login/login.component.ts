@@ -18,14 +18,14 @@ interface LoginModel {
 })
 export class LoginComponent implements OnInit {
 
-  public email: string = '';
-  public password: string = '';
+  public email: string = "";
+  public password: string = "";
   public validationMessage: string = '';
 
   public isLoading = false;
   public model: LoginModel = {email: '', password: ''};
 
-  constructor(private router: Router, private authenticationService: AuthenticationService, private http: HttpClient) {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
   }
 
   public onLogin(): void {
@@ -47,14 +47,16 @@ export class LoginComponent implements OnInit {
   }
 
   public clear(): void {
-    this.email = '';
-    this.password = '';
+    this.email = "";
+    this.password = "";
+ 
   }
+
 
   private prepareUserBody() {
     return {
-      password: this.password,
-      email: this.email,
+      email: this.model.email,
+      password: this.model.password
     };
   }
 
@@ -64,8 +66,10 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['priceList']);
       console.log(data);
     }, (error) => {
+
       console.log(this.email + this.password);
     });
+
   }
 
   ngOnInit() {
