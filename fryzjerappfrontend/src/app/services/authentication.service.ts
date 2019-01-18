@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class AuthenticationService {
   private token = 'dupa'; //zmienna zawierająca token
 
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
   getTokenName() {
