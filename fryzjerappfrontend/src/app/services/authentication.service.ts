@@ -8,7 +8,7 @@ import { HttpClient} from "@angular/common/http";
 export class AuthenticationService {
 
   private token = 'dupa'; //zmienna zawierająca token
-  public backendUrl: string = "http://localhost:8080/user";
+  public backendUrl: string = "http://localhost:8080/user/login";
 
 
   constructor() {

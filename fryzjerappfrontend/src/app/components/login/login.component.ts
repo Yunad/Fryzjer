@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   public isLoading = false;
   public model: LoginModel = {email: '', password: ''};
 
-  constructor(private router: Router, private authenticationService: AuthenticationService, private http: HttpClient) {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
   }
 
   public onLogin(): void {
@@ -67,8 +67,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authenticationService.loginUser(this.prepareUserBody()).subscribe((data: any) => {
-  onSubmit() {
-    this.authenticationService.loginUser(this.prepareUserBody()).subscribe((data: any) => {
       this.authenticationService.loginSuccess(data.tokenn);
       this.router.navigate(['priceList']);
       console.log(data);
@@ -76,6 +74,8 @@ export class LoginComponent implements OnInit {
 
       console.log(this.email + this.password);
     });
+      console.log(this.email + this.password);
+    })
   }
 
   ngOnInit() {
