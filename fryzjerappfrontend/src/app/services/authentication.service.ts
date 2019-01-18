@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import { HttpClient} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 
 
 @Injectable({
@@ -11,7 +11,7 @@ export class AuthenticationService {
   public backendUrl: string = "http://localhost:8080/user/login";
 
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   getTokenName() {
@@ -41,6 +41,7 @@ export class AuthenticationService {
     date.setTime(date.getTime() + 6000);
     document.cookie = `${this.token}=${tokenn};expires=${date.toUTCString()};path=/`;
   }
+
   public loginUser(userBody) {
     return this.http.post(this.backendUrl, userBody);
   }

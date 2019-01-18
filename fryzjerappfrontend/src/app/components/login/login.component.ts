@@ -53,12 +53,6 @@ export class LoginComponent implements OnInit {
     this.password = '';
   }
 
-  private prepareUserBody() {
-    return {
-      password: this.password,
-      email: this.email,
-    };
-  }
 
   private prepareUserBody() {
     return {
@@ -76,8 +70,7 @@ export class LoginComponent implements OnInit {
 
       console.log(this.email + this.password);
     });
-      console.log(this.email + this.password);
-    })
+
   }
 
   ngOnInit() {
