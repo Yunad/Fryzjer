@@ -18,8 +18,8 @@ interface LoginModel {
 })
 export class LoginComponent implements OnInit {
 
-  public email: string = '';
-  public password: string = '';
+  public email: string = "";
+  public password: string = "";
   public validationMessage: string = '';
 
   public isLoading = false;
@@ -47,6 +47,8 @@ export class LoginComponent implements OnInit {
   }
 
   public clear(): void {
+    this.email = "";
+    this.password = "";
     this.email = '';
     this.password = '';
   }
@@ -60,7 +62,7 @@ export class LoginComponent implements OnInit {
 
   private prepareUserBody() {
     return {
-      username: this.model.login,
+      email: this.model.email,
       password: this.model.password
     };
   }
