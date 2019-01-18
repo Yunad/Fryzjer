@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['priceList']);
       console.log(data);
     }, (error) => {
+
       console.log(this.email + this.password);
     });
   }
