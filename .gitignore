@@ -3,3 +3,6 @@
 */target/
 */node_modules
 */package-lock.json
+*/fryzjerappfrontend/src/**
+ dist/
+ src/main/

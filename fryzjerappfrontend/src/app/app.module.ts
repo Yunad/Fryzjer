@@ -23,6 +23,7 @@ import {MyDatePickerModule} from 'mydatepicker';
 import {TestBoxComponent} from './components/test-box/test-box.component';
 import {EmployeeComponent} from './components/employee/employee.component';
 import {ListemployeeService} from "./services/listemployee.service";
+import { AuthenticationService} from "./services/authentication.service";
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -61,7 +62,8 @@ const routes: Routes = [
   providers: [
     UserService,
     UtilityService,
-    ListemployeeService
+    ListemployeeService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

@@ -37,6 +37,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <!--<scope>test</scope>-->
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.5.0</version>
+        </dependency>
 
         <!--Solution to fix Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException. that class is deprecated in java 9+-->
         <dependency>
