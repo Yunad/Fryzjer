@@ -58,6 +58,15 @@ export class LoginComponent implements OnInit {
     };
   }
 
+  private prepareUserBody() {
+    return {
+      username: this.model.login,
+      password: this.model.password
+    };
+  }
+
+  onSubmit() {
+    this.authenticationService.loginUser(this.prepareUserBody()).subscribe((data: any) => {
   onSubmit() {
     this.authenticationService.loginUser(this.prepareUserBody()).subscribe((data: any) => {
       this.authenticationService.loginSuccess(data.tokenn);
