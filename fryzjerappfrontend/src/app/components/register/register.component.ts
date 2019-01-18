@@ -42,13 +42,12 @@ export class RegisterComponent implements OnInit {
       lastName: this.lastName,
       password: this.password,
       email: this.email,
-      roleId: this.roleId
+      roleId: this.roleId =1
     };
   }
 
   private validateUser(): boolean {
-    if (this.password == this.passwordRepeat && this.password.length > 7 && this.email.includes("@")
-      && this.lastName.length > 1 && this.firstName.length > 1 && this.email.includes(".")) //TODO: This must be changed. Adam
+    if (this.minimumPasswordLength() && this.correctPassword() && this.correctMail() && this.minumumUsersCredentialsLength())
       return true;
     else
       return false;
@@ -60,6 +59,26 @@ export class RegisterComponent implements OnInit {
     this.email = "";
     this.passwordRepeat = "";
     this.firstName = "";
+  }
+
+  private correctPassword(): boolean {
+    if (this.password == this.passwordRepeat)
+      return true;
+  }
+
+  private minimumPasswordLength(): boolean {
+    if (this.password.length > 7)
+      return true;
+  }
+
+  private correctMail(): boolean {
+    if (this.email.includes("@") && this.email.includes("."))//TODO: add regex or another method validation
+      return true;
+  }
+
+  private minumumUsersCredentialsLength(): boolean {
+    if (this.lastName.length > 1 && this.firstName.length > 1)
+      return true;
   }
 
   public clearInfo(): void {

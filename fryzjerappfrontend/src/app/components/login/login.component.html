@@ -4,13 +4,13 @@
   </p>
 
   <label for=""> E-mail</label>
-  <input [(ngModel)]="login" (change)="clearInfo()" type="text" class="form-control">
+  <input [(ngModel)]="email" (change)="clearInfo()" type="text" class="form-control">
 
   <label for="">Hasło</label>
   <input [(ngModel)]="password" (change)="clearInfo()" type="password" class="form-control">
   <br>
   <a>
-    <button (click)="onLogin()" class="btn">Zaloguj</button>
+    <button  (click)="onLogin()"  class="btn">Zaloguj</button>
   </a>
   <a class="lo">
     <button (click)="goTo('register')" class="btn">Załóż konto</button>
