@@ -51,18 +51,20 @@ export class LoginComponent implements OnInit {
     this.password = "";
   }
 
+  private prepareUserBody() {
+    return {
+      username: this.model.login,
+      password: this.model.password
+    };
+  }
+
   onSubmit() {
-    this.http.post('/user/login', this.model, {
-      params: {
-        username: this.model.login,
-        password: this.model.password
-      }
-    }).subscribe((data: any) => {
+    this.authenticationService.loginUser(this.prepareUserBody()).subscribe((data: any) => {
       this.authenticationService.loginSuccess(data.tokenn);
       this.router.navigate(['priceList']);
       console.log(data);
     }, (error) => {
-      console.log(this.login+this.password);
+      console.log(this.login + this.password);
     })
   }
 
