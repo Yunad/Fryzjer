@@ -39,7 +39,7 @@ public class AppConf extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors();
-        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/service/get", "/user/get/role/*", "/user/get/email/*")
+        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/service/get", "/user/get/role/*", "/user/get/email/*", "/user/create")
                 .permitAll()
                 .and()
                 .csrf().disable().authorizeRequests()

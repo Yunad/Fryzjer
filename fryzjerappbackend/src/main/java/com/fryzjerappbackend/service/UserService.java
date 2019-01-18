@@ -2,12 +2,10 @@ package com.fryzjerappbackend.service;
 
 import com.auth.validator.UserValidator;
 import com.fryzjerappbackend.exception.CustomError;
-import com.fryzjerappbackend.exception.EmailExistsException;
 import com.fryzjerappbackend.model.Role;
 import com.fryzjerappbackend.model.User;
 import com.fryzjerappbackend.repository.RoleRepository;
 import com.fryzjerappbackend.repository.UserRepository;
-import javafx.application.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
@@ -65,41 +63,40 @@ public class UserService implements UserDetailsService {
         return userRepository.findUserById(userId);
     }
 
-    public void registerNewUserAccount(User user) throws EmailExistsException {
+    public User registerNewUserAccount(User user){
         User dbUser = new User();
-        if (!isUserExistInDatabase(user.getEmail())) {
-            dbUser.setEmail(user.getEmail());
-            userValidator.validate(user, customError);
-            dbUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            dbUser.setName(user.getName());
-            dbUser.setLastName(user.getLastName());
-            dbUser.setRoleId(2L);
-            userRepository.save(dbUser);
-        }
+        dbUser.setEmail(user.getEmail());
+        userValidator.validate(user, customError);
+        dbUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        dbUser.setName(user.getName());
+        dbUser.setLastName(user.getLastName());
+        dbUser.setRoleId(2L);
+        userRepository.save(dbUser);
+        return dbUser;
     }
 
     public List<User> getUserByRoleId(Long id) {
         return userRepository.findUserByRoleId(id);
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Optional<User> user = userRepository.findByEmail(username);
-//
-//        if (!user.isPresent()) {
-//            throw new UsernameNotFoundException(username);
-//        }
-//        final User user1 = user.get();
-//        final Optional<Role> roleById = roleRepository.findRoleById(user1.getRoleId());
-//        List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList(roleById.get().getName());
-//        return new org.springframework.security.core.userdetails.User(
-//                user1.getName(),
-//                user1.getPassword(),
-//                requireActivation && !user.get().get getToken().equals("1"), // enabled. Use whatever condition you like
-//                true, // accountNonExpired. Use whatever condition you like
-//                true, // credentialsNonExpired. Use whatever condition you like
-//                true, // accountNonLocked. Use whatever condition you like
-//                auth);
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = userRepository.findByEmail(username);
+
+        if (!user.isPresent()) {
+            throw new UsernameNotFoundException(username);
+        }
+        final User user1 = user.get();
+        final Optional<Role> roleById = roleRepository.findRoleById(user1.getRoleId());
+        List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList(roleById.get().getName());
+        return new org.springframework.security.core.userdetails.User(
+                user1.getName(),
+                user1.getPassword(),
+                true, // enabled. Use whatever condition you like
+                true, // accountNonExpired. Use whatever condition you like
+                true, // credentialsNonExpired. Use whatever condition you like
+                true, // accountNonLocked. Use whatever condition you like
+                auth);
+    }
 }
 
