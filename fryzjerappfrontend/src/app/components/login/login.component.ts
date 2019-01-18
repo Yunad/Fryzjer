@@ -31,9 +31,10 @@ export class LoginComponent implements OnInit {
   public onLogin(): void {
     this.validationMessage = "";
     if (this.login.length > 1 && this.password.length > 7) {//TODO: Lepsza walidacja potrzebna na mail oraz na haslo. Adam
-      //wysylanie do serwera
+      this.onSubmit();//wysylanie do serwera
     } else {
-      this.validationMessage = "Wypełnij pole LOGIN oraz HASŁO";
+      this.validationMessage = "Wypełnij poprawnie LOGIN oraz HASŁO";
+      this.clear();
     }
   }
 
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['priceList']);
       console.log(data);
     }, (error) => {
-      console.log(error);
+      console.log(this.login+this.password);
     })
   }
 
