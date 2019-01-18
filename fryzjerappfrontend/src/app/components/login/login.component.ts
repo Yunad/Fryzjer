@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
-import {HttpClient} from "@angular/common/http";
-import {error} from "selenium-webdriver";
+
 
 interface LoginModel {
 
-  login: string;
+  email: string;
   password: string;
 
 }
@@ -18,19 +17,19 @@ interface LoginModel {
 })
 export class LoginComponent implements OnInit {
 
-  public login: string = "";
+  public email: string = "";
   public password: string = "";
   public validationMessage: string = '';
 
   public isLoading = false;
-  public model: LoginModel = {login: '', password: ''};
+  public model: LoginModel = {email: '', password: ''};
 
-  constructor(private router: Router, private authenticationService: AuthenticationService, private http: HttpClient) {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
   }
 
   public onLogin(): void {
     this.validationMessage = "";
-    if (this.login.length > 1 && this.password.length > 7) {//TODO: Lepsza walidacja potrzebna na mail oraz na haslo. Adam
+    if (this.email.length > 1 && this.password.length > 7) {//TODO: Lepsza walidacja potrzebna na mail oraz na haslo. Adam
       this.onSubmit();//wysylanie do serwera
     } else {
       this.validationMessage = "Wypełnij poprawnie LOGIN oraz HASŁO";
@@ -47,13 +46,13 @@ export class LoginComponent implements OnInit {
   }
 
   public clear(): void {
-    this.login = "";
+    this.email = "";
     this.password = "";
   }
 
   private prepareUserBody() {
     return {
-      username: this.model.login,
+      email: this.model.email,
       password: this.model.password
     };
   }
@@ -64,7 +63,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['priceList']);
       console.log(data);
     }, (error) => {
-      console.log(this.login + this.password);
+      console.log(this.email + this.password);
     })
   }
 

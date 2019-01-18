@@ -56,7 +56,7 @@ public class UserService {
             dbUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             dbUser.setName(user.getName());
             dbUser.setLastName(user.getLastName());
-            dbUser.setRoleId(2L);
+            dbUser.setRoleId(user.getRoleId());
             userRepository.save(dbUser);
         }
     }

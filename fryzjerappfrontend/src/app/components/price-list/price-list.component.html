@@ -15,8 +15,8 @@
       <div *ngIf="selectedService" class="col-lg-10">
 
         <h2 class="tit">{{selectedService.name | uppercase}}</h2>
-        <div><span class="time">Czas trwania usługi: </span>{{selectedService.duration}}</div>
-        <div><span class="price">Cena usługi: </span>{{selectedService.price}}</div>
+        <div><span class="time">Czas trwania usługi: </span>{{selectedService.duration}}<b>min.</b></div>
+        <div><span class="price">Cena usługi: </span>{{selectedService.price}}<b>PLN</b></div>
         <div class="descr"><span>Opis usługi: </span><br>{{selectedService.description}}</div>
 
 
