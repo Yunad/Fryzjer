@@ -6,6 +6,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+
+//klasa zwraca metode do tworzenia post requestow, ktora wykorzystujemy w kontrolerach by nie powtarzac kodu
 public class ControllerTestHelper {
 
     private static final ObjectMapper OM = new ObjectMapper();

@@ -1,5 +1,6 @@
-import {LoginComponents, MainPageComponents, PriceListComponents, ReservationComponents} from './AppComponentsTest.po';
+import {MainPageComponents, ReservationComponents} from './AppComponentsTest.po';
 import {RegisterComponents} from './RegisterModuleTest.po';
+import {LoginComponents} from './LoginModuleTest.po';
 import {browser} from 'protractor';
 
 describe('--Testy obecności komponentów, poprawność ścieżek na stronie--', function () {
@@ -75,11 +76,7 @@ describe('--Testy obecności komponentów, poprawność ścieżek na stronie--',
     });
 
     it('Wyświetla przycisk Zaloguj', function () {
-      expect(login.getLogin2Button().isPresent()).toBe(true);
-    });
-
-    it('Wyświetla przycisk Załóż konto', function () {
-      expect(login.getCreateAccountButton().isPresent()).toBe(true);
+      expect(login.getLoginButton().isPresent()).toBe(true);
     });
 
   });
@@ -94,11 +91,15 @@ describe('--Testy obecności komponentów, poprawność ścieżek na stronie--',
     });
 
     it('Wyświetla napis Zarejestruj się', function () {
-      expect(register.getRegisterName().getText()).toEqual('Zarejestruj się');
+      expect(register.getRegisterNameText().isPresent()).toBe(true);
     });
 
     it('Wyświetla zdjęcie w widoku rejestracji', function () {
       expect(register.getRegisterImg().isPresent()).toBe(true);
+    });
+
+    it('Wyświetla przycisk Załóż konto', function () {
+      expect(register.getRegisterButton().isPresent()).toBe(true);
     });
 
   });
@@ -117,13 +118,4 @@ describe('--Testy obecności komponentów, poprawność ścieżek na stronie--',
 
   });
 
-  describe('Widok cennika', function () {
-    let price: PriceListComponents;
-
-    beforeEach(() => {
-      browser.get('/priceList');
-      price = new PriceListComponents();
-    });
-
-  });
 });
