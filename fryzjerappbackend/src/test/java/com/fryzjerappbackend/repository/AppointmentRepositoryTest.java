@@ -19,8 +19,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@DataJpaTest //adnotacja zalatwia polaczenie do bazy
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD) //czysci zawartosc po kazdej metodzie
+//inaczej metody by wplywaly na drugie
+
 public class AppointmentRepositoryTest {
 
     @Autowired
@@ -32,8 +34,9 @@ public class AppointmentRepositoryTest {
     @Autowired
     private ServiceRepository serviceRepository;
 
+    //wkladamy Appointment za pomoca beana i testujemy czy metoda zwroci to co napisalismy
     @Test
-    public void shouldFindAppointmentById(){
+    public void shouldFindAppointmentById() {
         //given
         Appointment appointment = new Appointment();
         appointment.setDate("20190101");

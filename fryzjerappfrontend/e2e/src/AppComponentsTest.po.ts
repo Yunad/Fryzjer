@@ -5,14 +5,6 @@ function buttonPath(numberButton: number) {
     'ul > li:nth-child(' + numberButton + ') > a > b';
 }
 
-function loginViewPath(loginComponents: string) {
-  return 'body > app-root > app-homepage > div > app-header > header > div > div.col-lg-4 > app-login > div > ' + loginComponents;
-}
-
-export function registerViewPath(registerComponents: string) {
-  return 'body > app-root > app-register > div > header > div > div > div.col-sm-6.' + registerComponents;
-}
-
 function reservationViewPath(reservationComponents: string) {
   return 'body > app-root > app-reservation > div > header > div > div.col-lg-4 > app-reservation-sidebar > div > ' + reservationComponents;
 }
@@ -51,30 +43,10 @@ export class MainPageComponents {
 
 }
 
-export class LoginComponents {
-
-  getLoginLabel() {
-    return element(by.css(loginViewPath('p.Butlog > b')));
-  }
-
-  getLogin2Button() {
-    return element(by.css(loginViewPath('a:nth-child(7) > button')));
-  }
-
-  getCreateAccountButton() {
-    return element(by.css(loginViewPath('a.lo > button')));
-  }
-
-}
-
 export class ReservationComponents {
 
   getCalendar() {
     return element(by.css(reservationViewPath('div > my-date-picker > div > div')));
   }
-
-}
-
-export class PriceListComponents {
 
 }

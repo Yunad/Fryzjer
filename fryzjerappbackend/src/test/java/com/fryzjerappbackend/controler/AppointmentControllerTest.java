@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import static com.fryzjerappbackend.controler.ControllerTestHelper.post;
@@ -25,12 +24,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class AppointmentControllerTest {
 
-    private MockMvc mockMvc;
+    private MockMvc mockMvc; //mockuje request i responsy, dobra do testow kontrolerow
 
-    @InjectMocks
+    @InjectMocks //adnotacja kolekcjonuje wszystkie nocki
     private AppointmentController appointmentController;
 
-    @Mock
+    @Mock //tworzy udawane beany - kontenerki by spring zwrocil nie null a obiekt
     private AppointmentService appointmentService;
 
     @Before
@@ -55,6 +54,7 @@ public class AppointmentControllerTest {
         appointment.setDate("testDate");
 
         //when
+        //metoda Mockito - sprawdzamy czy obiekt wyjety po naszej logice jest dalej tym samym
         Mockito.when(appointmentService.getAllAppointments()).thenReturn((Collections.singletonList(appointment)));
 
         //then
@@ -62,7 +62,7 @@ public class AppointmentControllerTest {
 
         //then
         this.mockMvc.perform(builder)
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.status().isOk()) //andExpect to jak assert w unitach
                 .andExpect(jsonPath("$.[0].date", is(equalTo(appointment.getDate()))))
                 .andDo(MockMvcResultHandlers.print());
     }
