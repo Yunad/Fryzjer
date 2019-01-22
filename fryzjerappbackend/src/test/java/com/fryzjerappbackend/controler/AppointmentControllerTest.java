@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AppointmentControllerTest {
 
     private MockMvc mockMvc; //mockuje request i responsy, dobra do testow kontrolerow
-
+//@Marcin Marcin ja mam nadzieje,ze ty pamietasz ze twoim zadaniem nie bylo klepanie dalej testów, a polaczenia modolow logowania oraz w zaleznosci od autentykacji zastosowanie zmian na main page? opisanie sobie wszystkiego ci nie pomoze, tym barrdziej ze jasno miales powiedziane nie przez nas jaki masz cel. Nie ma nic gorszego niz osoba w zespole ktora NIE SLUCHA ewentualnie nie jest w stanie obronic swojej propozycji. 
     @InjectMocks //adnotacja kolekcjonuje wszystkie nocki
     private AppointmentController appointmentController;
 
